@@ -18,59 +18,66 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffCE181B),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: Column(
-            children: [
-              const SizedBox(height: 100),
-              Image.asset(
-                'assets/images/eatwiselogo.png',
-                height: 60,
-              ),
-              const SizedBox(height: 35),
-              Text(
-                "Let's log in",
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xffCE181B), Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.75, 0.25], 
+          ),
+        ),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: Column(
+              children: [
+                const SizedBox(height: 100),
+                Image.asset(
+                  'assets/images/eatwiselogo.png',
+                  height: 60,
                 ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Text(
-                  'Please provide your information to personalize\n'
-                  'your experience and start exploring the full\n'
-                  'potential of the app',
-                  textAlign: TextAlign.center,
+                const SizedBox(height: 35),
+                Text(
+                  "Let's log in",
                   style: GoogleFonts.poppins(
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.w300,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white,
                   ),
                 ),
-              ),
-              const SizedBox(height: 50),
-
-              Container(
-                padding: const EdgeInsets.all(28),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                SizedBox(height: 16),
+                Center(
+                  child: Text(
+                    'Please provide your information to personalize\n'
+                    'your experience and start exploring the full\n'
+                    'potential of the app',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 15),
-                    buildInputField("Email", "Enter your email...", (value) => controller.email.value = value),
-                    buildPasswordField(),
-                    Row(
+                const SizedBox(height: 50),
+                Container(
+                  padding: const EdgeInsets.all(28),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      buildInputField("Email", "Enter your email...", (value) => controller.email.value = value),
+                      buildPasswordField(),
+                      Row(
                         children: [
                           Transform.scale(
-                            scale: 0.85, 
+                            scale: 0.85,
                             child: Checkbox(
                               value: isRememberMeChecked,
                               onChanged: (value) {
@@ -79,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
                                 });
                               },
                               visualDensity: VisualDensity.compact,
-                              activeColor: const Color(0xffCE181B), 
+                              activeColor: const Color(0xffCE181B),
                             ),
                           ),
                           const SizedBox(width: 6),
@@ -93,10 +100,9 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           const Spacer(),
                           TextButton(
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                             style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero, 
+                              padding: EdgeInsets.zero,
                               minimumSize: const Size(0, 0),
                             ),
                             child: Text(
@@ -110,60 +116,61 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ],
                       ),
-                    const SizedBox(height: 35),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () => controller.login(),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xffCE181B),
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                      const SizedBox(height: 35),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => controller.login(),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xffCE181B),
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          "Login",
-                          style: GoogleFonts.poppins(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                          child: Text(
+                            "Login",
+                            style: GoogleFonts.poppins(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 15),
-                    
-                    Center(
-                      child: GestureDetector(
-                        onTap: () => Get.toNamed('/signup'),
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Don’t Have an Account? ",
-                            style: GoogleFonts.poppins(fontSize: 14),
-                            children: [
-                              TextSpan(
-                                text: "Sign Up",
-                                style: GoogleFonts.poppins(
-                                  color: const Color(0xffCE181B),
-                                  fontWeight: FontWeight.bold,
+                      const SizedBox(height: 15),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () => Get.toNamed('/signup'),
+                          child: Text.rich(
+                            TextSpan(
+                              text: "Don’t Have an Account? ",
+                              style: GoogleFonts.poppins(fontSize: 14),
+                              children: [
+                                TextSpan(
+                                  text: "Sign Up",
+                                  style: GoogleFonts.poppins(
+                                    color: const Color(0xffCE181B),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
-                  ],
+                      SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
-  }
+}
+
 
   Widget buildInputField(String label, String hint, Function(String) onChanged, {bool obscureText = false}) {
     return Column(

@@ -16,6 +16,10 @@ abstract class Routes {
   static const ADDRECIPE = _Paths.ADDRECIPE;
   static const PROFILE = _Paths.PROFILE;
   static const WELCOMESCREEN = _Paths.WELCOMESCREEN;
+  static const FORGOTPASSWORD = _Paths.FORGOTPASSWORD;
+  static const EMAILFORGOTPASSWORD = _Paths.EMAILFORGOTPASSWORD;
+  static const OTPFORGOTPASSWORD = _Paths.OTPFORGOTPASSWORD;
+  static const NEWPASSWORDFORGOTPASSWORD = _Paths.NEWPASSWORDFORGOTPASSWORD;
 }
 
 abstract class _Paths {
@@ -33,4 +37,8 @@ abstract class _Paths {
   static const ADDRECIPE = '/addrecipe';
   static const PROFILE = '/profile';
   static const WELCOMESCREEN = '/welcomescreen';
+  static const FORGOTPASSWORD = '/forgotpassword';
+  static const EMAILFORGOTPASSWORD = '/emailforgotpassword';
+  static const OTPFORGOTPASSWORD = '/otpforgotpassword';
+  static const NEWPASSWORDFORGOTPASSWORD = '/newpasswordforgotpassword';
 }

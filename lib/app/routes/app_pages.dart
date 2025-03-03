@@ -8,6 +8,8 @@ import '../modules/detailrecipe/bindings/detailrecipe_binding.dart';
 import '../modules/detailrecipe/views/detailrecipe_view.dart';
 import '../modules/editdeleterecipe/bindings/editdeleterecipe_binding.dart';
 import '../modules/editdeleterecipe/views/editdeleterecipe_view.dart';
+import '../modules/emailforgotpassword/bindings/emailforgotpassword_binding.dart';
+import '../modules/emailforgotpassword/views/emailforgotpassword_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/lauchapp/bindings/lauchapp_binding.dart';
@@ -16,8 +18,12 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/loginorsignup/bindings/loginorsignup_binding.dart';
 import '../modules/loginorsignup/views/loginorsignup_view.dart';
+import '../modules/newpasswordforgotpassword/bindings/newpasswordforgotpassword_binding.dart';
+import '../modules/newpasswordforgotpassword/views/newpasswordforgotpassword_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/otpforgotpassword/bindings/otpforgotpassword_binding.dart';
+import '../modules/otpforgotpassword/views/otpforgotpassword_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/recipe/bindings/recipe_binding.dart';
@@ -32,7 +38,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.EMAILFORGOTPASSWORD;
 
   static final routes = [
     GetPage(
@@ -99,6 +105,21 @@ class AppPages {
       name: _Paths.WELCOMESCREEN,
       page: () => const WelcomescreenView(),
       binding: WelcomescreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMAILFORGOTPASSWORD,
+      page: () =>  EmailforgotpasswordView(),
+      binding: EmailforgotpasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTPFORGOTPASSWORD,
+      page: () =>  OtpforgotpasswordView(),
+      binding: OtpforgotpasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEWPASSWORDFORGOTPASSWORD,
+      page: () => const NewpasswordforgotpasswordView(),
+      binding: NewpasswordforgotpasswordBinding(),
     ),
   ];
 }
