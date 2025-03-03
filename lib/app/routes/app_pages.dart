@@ -1,0 +1,104 @@
+import 'package:get/get.dart';
+
+import '../modules/addrecipe/bindings/addrecipe_binding.dart';
+import '../modules/addrecipe/views/addrecipe_view.dart';
+import '../modules/chatbot/bindings/chatbot_binding.dart';
+import '../modules/chatbot/views/chatbot_view.dart';
+import '../modules/detailrecipe/bindings/detailrecipe_binding.dart';
+import '../modules/detailrecipe/views/detailrecipe_view.dart';
+import '../modules/editdeleterecipe/bindings/editdeleterecipe_binding.dart';
+import '../modules/editdeleterecipe/views/editdeleterecipe_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
+import '../modules/lauchapp/bindings/lauchapp_binding.dart';
+import '../modules/lauchapp/views/lauchapp_view.dart';
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
+import '../modules/loginorsignup/bindings/loginorsignup_binding.dart';
+import '../modules/loginorsignup/views/loginorsignup_view.dart';
+import '../modules/onboarding/bindings/onboarding_binding.dart';
+import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/recipe/bindings/recipe_binding.dart';
+import '../modules/recipe/views/recipe_view.dart';
+import '../modules/signup/bindings/signup_binding.dart';
+import '../modules/signup/views/signup_view.dart';
+import '../modules/welcomescreen/bindings/welcomescreen_binding.dart';
+import '../modules/welcomescreen/views/welcomescreen_view.dart';
+
+part 'app_routes.dart';
+
+class AppPages {
+  AppPages._();
+
+  static const INITIAL = Routes.LOGIN;
+
+  static final routes = [
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => LoginView(),
+      binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGNUP,
+      page: () => const SignupView(),
+      binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => const OnboardingView(),
+      binding: OnboardingBinding(),
+    ),
+    GetPage(
+      name: _Paths.LAUCHAPP,
+      page: () => const LauchappView(),
+      binding: LauchappBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGINORSIGNUP,
+      page: () => LoginorsignupView(),
+      binding: LoginorsignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAILRECIPE,
+      page: () => const DetailrecipeView(),
+      binding: DetailrecipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPE,
+      page: () => const RecipeView(),
+      binding: RecipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHATBOT,
+      page: () => const ChatbotView(),
+      binding: ChatbotBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDITDELETERECIPE,
+      page: () => const EditdeleterecipeView(),
+      binding: EditdeleterecipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADDRECIPE,
+      page: () => const AddrecipeView(),
+      binding: AddrecipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.WELCOMESCREEN,
+      page: () => const WelcomescreenView(),
+      binding: WelcomescreenBinding(),
+    ),
+  ];
+}
