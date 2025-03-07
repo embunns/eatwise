@@ -1,23 +1,39 @@
 import 'package:get/get.dart';
 
 class SignupController extends GetxController {
-  //TODO: Implement SignupController
+  var fullname = ''.obs;
+  var email = ''.obs;
+  var phoneNumber = ''.obs;
+  var password = ''.obs;
+  var confirmpassword = ''.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
+  //final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> signUp() async {
+    if (password.value != confirmpassword.value) {
+      Get.snackbar('Error', 'Passwords do not match');
+      return;
+    }
+
+    try {
+      //UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      //  email: email.value,
+      //  password: password.value,
+      //);
+
+      //String uid = userCredential.user!.uid;
+
+      //await _firestore.collection('users').doc(uid).set({
+      //  'fullname': fullname.value,
+      //  'email': email.value,
+      //  'phonenumber': phoneNumber.value,
+      //  'likedrecipes': [],
+      //});
+
+      Get.offNamed('/login');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

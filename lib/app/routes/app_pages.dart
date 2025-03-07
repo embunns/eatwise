@@ -40,7 +40,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGINORSIGNUP;
+  static const INITIAL = Routes.SIGNUP;
 
   static final routes = [
     GetPage(
@@ -55,7 +55,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => const SignupView(),
+      page: () => SignupView(),
       binding: SignupBinding(),
     ),
     GetPage(
