@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
-import '../controllers/otpforgotpassword_controller.dart';
 
-class OtpforgotpasswordView extends StatefulWidget {
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../controllers/otpcode_controller.dart';
+
+class OtpcodeView extends StatefulWidget {
   @override
-  _OtpforgotpasswordViewState createState() => _OtpforgotpasswordViewState();
+  _OtpcodeViewState createState() => _OtpcodeViewState();
 }
 
-class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
-  final controller = OtpforgotpasswordController();
+class _OtpcodeViewState extends State<OtpcodeView> {
+  final controller = OtpcodeController();
   final List<TextEditingController> otpControllers =
       List.generate(4, (index) => TextEditingController());
   final List<FocusNode> focusNodes =
@@ -56,7 +58,7 @@ class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
               ),
               const SizedBox(height: 45),
               Text(
-                "Forgot Password",
+                "OTP Code",
                 style: GoogleFonts.poppins(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
@@ -178,3 +180,4 @@ class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
     );
   }
 }
+

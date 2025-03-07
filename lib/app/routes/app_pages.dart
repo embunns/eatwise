@@ -22,6 +22,8 @@ import '../modules/newpasswordforgotpassword/bindings/newpasswordforgotpassword_
 import '../modules/newpasswordforgotpassword/views/newpasswordforgotpassword_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/otpcode/bindings/otpcode_binding.dart';
+import '../modules/otpcode/views/otpcode_view.dart';
 import '../modules/otpforgotpassword/bindings/otpforgotpassword_binding.dart';
 import '../modules/otpforgotpassword/views/otpforgotpassword_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -38,7 +40,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.EMAILFORGOTPASSWORD;
+  static const INITIAL = Routes.LOGINORSIGNUP;
 
   static final routes = [
     GetPage(
@@ -108,18 +110,23 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EMAILFORGOTPASSWORD,
-      page: () =>  EmailforgotpasswordView(),
+      page: () => EmailforgotpasswordView(),
       binding: EmailforgotpasswordBinding(),
     ),
     GetPage(
       name: _Paths.OTPFORGOTPASSWORD,
-      page: () =>  OtpforgotpasswordView(),
+      page: () => OtpforgotpasswordView(),
       binding: OtpforgotpasswordBinding(),
     ),
     GetPage(
       name: _Paths.NEWPASSWORDFORGOTPASSWORD,
       page: () => const NewpasswordforgotpasswordView(),
       binding: NewpasswordforgotpasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTPCODE,
+      page: () => OtpcodeView(),
+      binding: OtpcodeBinding(),
     ),
   ];
 }

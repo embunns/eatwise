@@ -20,6 +20,7 @@ abstract class Routes {
   static const EMAILFORGOTPASSWORD = _Paths.EMAILFORGOTPASSWORD;
   static const OTPFORGOTPASSWORD = _Paths.OTPFORGOTPASSWORD;
   static const NEWPASSWORDFORGOTPASSWORD = _Paths.NEWPASSWORDFORGOTPASSWORD;
+  static const OTPCODE = _Paths.OTPCODE;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const EMAILFORGOTPASSWORD = '/emailforgotpassword';
   static const OTPFORGOTPASSWORD = '/otpforgotpassword';
   static const NEWPASSWORDFORGOTPASSWORD = '/newpasswordforgotpassword';
+  static const OTPCODE = '/otpcode';
 }
