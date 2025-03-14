@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/recipe_controller.dart';
+import '../controllers/recipebasedonbudget_controller.dart';
 
-class RecipeView extends GetView<RecipeController> {
-  const RecipeView({super.key});
+class RecipebasedonbudgetView extends GetView<RecipebasedonbudgetController> {
+  const RecipebasedonbudgetView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('RecipeView'),
+        title: const Text('RecipebasedonbudgetView'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'RecipeView is working',
+          'RecipebasedonbudgetView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

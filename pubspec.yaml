@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  iconsax: ^0.0.8 
+  image_picker: ^1.0.7
 
   cupertino_icons: ^1.0.8
   get: ^4.7.2

@@ -28,8 +28,12 @@ import '../modules/otpforgotpassword/bindings/otpforgotpassword_binding.dart';
 import '../modules/otpforgotpassword/views/otpforgotpassword_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
-import '../modules/recipe/bindings/recipe_binding.dart';
-import '../modules/recipe/views/recipe_view.dart';
+import '../modules/recipebasedonbudget/bindings/recipebasedonbudget_binding.dart';
+import '../modules/recipebasedonbudget/views/recipebasedonbudget_view.dart';
+import '../modules/recipebasedoncategories/bindings/recipebasedoncategories_binding.dart';
+import '../modules/recipebasedoncategories/views/recipebasedoncategories_view.dart';
+import '../modules/recipebasedonrecommendation/bindings/recipebasedonrecommendation_binding.dart';
+import '../modules/recipebasedonrecommendation/views/recipebasedonrecommendation_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 import '../modules/welcomescreen/bindings/welcomescreen_binding.dart';
@@ -40,7 +44,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SIGNUP;
+  static const INITIAL = Routes.ADDRECIPE;
 
   static final routes = [
     GetPage(
@@ -79,11 +83,6 @@ class AppPages {
       binding: DetailrecipeBinding(),
     ),
     GetPage(
-      name: _Paths.RECIPE,
-      page: () => const RecipeView(),
-      binding: RecipeBinding(),
-    ),
-    GetPage(
       name: _Paths.CHATBOT,
       page: () => const ChatbotView(),
       binding: ChatbotBinding(),
@@ -95,7 +94,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADDRECIPE,
-      page: () => const AddrecipeView(),
+      page: () => AddrecipeView(),
       binding: AddrecipeBinding(),
     ),
     GetPage(
@@ -127,6 +126,21 @@ class AppPages {
       name: _Paths.OTPCODE,
       page: () => OtpcodeView(),
       binding: OtpcodeBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPEBASEDONCATEGORIES,
+      page: () => const RecipebasedoncategoriesView(),
+      binding: RecipebasedoncategoriesBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPEBASEDONRECOMMENDATION,
+      page: () => const RecipebasedonrecommendationView(),
+      binding: RecipebasedonrecommendationBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPEBASEDONBUDGET,
+      page: () => const RecipebasedonbudgetView(),
+      binding: RecipebasedonbudgetBinding(),
     ),
   ];
 }

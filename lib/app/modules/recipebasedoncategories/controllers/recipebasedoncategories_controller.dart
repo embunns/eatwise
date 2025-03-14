@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class RecipeController extends GetxController {
-  //TODO: Implement RecipeController
+class RecipebasedoncategoriesController extends GetxController {
+  //TODO: Implement RecipebasedoncategoriesController
 
   final count = 0.obs;
   @override
