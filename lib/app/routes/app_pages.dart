@@ -44,7 +44,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ADDRECIPE;
+  static const INITIAL = Routes.PROFILE;
 
   static final routes = [
     GetPage(
@@ -79,7 +79,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAILRECIPE,
-      page: () => const DetailrecipeView(),
+      page: () =>  DetailrecipeView(),
       binding: DetailrecipeBinding(),
     ),
     GetPage(
@@ -99,7 +99,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () =>  ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
@@ -129,17 +129,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RECIPEBASEDONCATEGORIES,
-      page: () => const RecipebasedoncategoriesView(),
+      page: () => RecipebasedoncategoriesView(),
       binding: RecipebasedoncategoriesBinding(),
     ),
     GetPage(
       name: _Paths.RECIPEBASEDONRECOMMENDATION,
-      page: () => const RecipebasedonrecommendationView(),
+      page: () => RecipebasedonrecommendationView(),
       binding: RecipebasedonrecommendationBinding(),
     ),
     GetPage(
       name: _Paths.RECIPEBASEDONBUDGET,
-      page: () => const RecipebasedonbudgetView(),
+      page: () => RecipebasedonbudgetView(),
       binding: RecipebasedonbudgetBinding(),
     ),
   ];
