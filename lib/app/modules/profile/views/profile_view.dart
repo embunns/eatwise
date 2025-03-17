@@ -298,7 +298,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       child: Text(
-                        "logout", 
+                        "Logout", 
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 18,
