@@ -44,12 +44,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DETAILRECIPE;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -84,7 +84,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CHATBOT,
-      page: () => const ChatbotView(),
+      page: () => ChatbotView(),
       binding: ChatbotBinding(),
     ),
     GetPage(
