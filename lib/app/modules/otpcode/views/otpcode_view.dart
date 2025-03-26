@@ -1,3 +1,4 @@
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -34,6 +35,61 @@ class _OtpcodeViewState extends State<OtpcodeView> {
     } else if (value.isEmpty && index > 0) {
       FocusScope.of(context).requestFocus(focusNodes[index - 1]);
     }
+  }
+
+  void showAccountCreatedPopup() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: 2), () {
+          Navigator.of(context).pop();
+          Get.toNamed(Routes.LOGIN);
+        });
+
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(50),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  'assets/images/noodle.png', 
+                  height: 160,
+                  width: 160,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  "Account Successfully Created!",
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  "Please log in with the email and password you have set up.",
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -131,7 +187,7 @@ class _OtpcodeViewState extends State<OtpcodeView> {
                     const SizedBox(height: 20),
                     Text.rich(
                       TextSpan(
-                        text: "If you didn’t receive a code, ",
+                        text: "If you didn't receive a code, ",
                         style: GoogleFonts.poppins(fontSize: 12),
                         children: [
                           TextSpan(
@@ -149,8 +205,9 @@ class _OtpcodeViewState extends State<OtpcodeView> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          String otpCode = otpControllers.map((e) => e.text).join();
-                          controller.verifyOtp(otpCode);
+                          //String otpCode = otpControllers.map((e) => e.text).join();
+                          //controller.verifyOtp(otpCode);
+                          showAccountCreatedPopup();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
@@ -180,4 +237,3 @@ class _OtpcodeViewState extends State<OtpcodeView> {
     );
   }
 }
-

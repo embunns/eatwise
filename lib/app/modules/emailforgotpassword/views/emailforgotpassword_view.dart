@@ -1,3 +1,4 @@
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +79,9 @@ class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () => controller.emailforgotpassword(),
+                          onPressed: () {
+                            Get.toNamed(Routes.OTPFORGOTPASSWORD);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xffCE181B),
                             padding: const EdgeInsets.symmetric(vertical: 20),

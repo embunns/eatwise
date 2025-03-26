@@ -1,3 +1,4 @@
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -100,7 +101,9 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           const Spacer(),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                            Get.toNamed(Routes.EMAILFORGOTPASSWORD);
+                          },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
                               minimumSize: const Size(0, 0),
@@ -120,7 +123,9 @@ class _LoginViewState extends State<LoginView> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () => controller.login(),
+                           onPressed: () {
+                            Get.toNamed(Routes.HOME);
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xffCE181B),
                             padding: const EdgeInsets.symmetric(vertical: 20),

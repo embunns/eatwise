@@ -6,7 +6,6 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
   static const SIGNUP = _Paths.SIGNUP;
-  static const ONBOARDING = _Paths.ONBOARDING;
   static const LAUCHAPP = _Paths.LAUCHAPP;
   static const LOGINORSIGNUP = _Paths.LOGINORSIGNUP;
   static const DETAILRECIPE = _Paths.DETAILRECIPE;
@@ -25,6 +24,9 @@ abstract class Routes {
   static const RECIPEBASEDONRECOMMENDATION = _Paths.RECIPEBASEDONRECOMMENDATION;
   static const RECIPEBASEDONBUDGET = _Paths.RECIPEBASEDONBUDGET;
   static const BOTTOMNAVIGATION = _Paths.BOTTOMNAVIGATION;
+  static const ONBOARDING1 = _Paths.ONBOARDING1;
+  static const ONBOARDING2 = _Paths.ONBOARDING2;
+  static const ONBOARDING3 = _Paths.ONBOARDING3;
 }
 
 abstract class _Paths {
@@ -32,7 +34,6 @@ abstract class _Paths {
   static const HOME = '/home';
   static const LOGIN = '/login';
   static const SIGNUP = '/signup';
-  static const ONBOARDING = '/onboarding';
   static const LAUCHAPP = '/lauchapp';
   static const LOGINORSIGNUP = '/loginorsignup';
   static const DETAILRECIPE = '/detailrecipe';
@@ -51,4 +52,7 @@ abstract class _Paths {
   static const RECIPEBASEDONRECOMMENDATION = '/recipebasedonrecommendation';
   static const RECIPEBASEDONBUDGET = '/recipebasedonbudget';
   static const BOTTOMNAVIGATION = '/bottomnavigation';
+  static const ONBOARDING1 = '/onboarding1';
+  static const ONBOARDING2 = '/onboarding2';
+  static const ONBOARDING3 = '/onboarding3';
 }

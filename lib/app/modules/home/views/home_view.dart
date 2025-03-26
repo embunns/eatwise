@@ -195,7 +195,7 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       bottomNavigationBar: BottomnavigationView(
-        currentIndex: 0, // 0 for Explore/Home page
+        currentIndex: 0, 
         onTap: (index) {
           switch (index) {
             case 0:

@@ -1,3 +1,5 @@
+import 'package:eatwise/app/modules/bottomnavigation/views/bottomnavigation_view.dart';
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -308,6 +310,24 @@ class ChatbotView extends GetView<ChatbotController> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomnavigationView(
+        currentIndex: 2, 
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Get.offNamed(Routes.HOME);
+              break;
+            case 1:
+              Get.offNamed(Routes.RECIPEBASEDONRECOMMENDATION);
+              break;
+            case 2:
+              break;
+            case 3:
+              Get.offNamed(Routes.PROFILE);
+              break;
+          }
+        },
       ),
     );
   }

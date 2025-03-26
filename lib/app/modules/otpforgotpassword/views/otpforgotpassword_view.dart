@@ -1,3 +1,4 @@
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -147,9 +148,8 @@ class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          String otpCode = otpControllers.map((e) => e.text).join();
-                          controller.verifyOtp(otpCode);
-                        },
+                            Get.toNamed(Routes.NEWPASSWORDFORGOTPASSWORD);
+                          },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
                           padding: const EdgeInsets.symmetric(vertical: 18),

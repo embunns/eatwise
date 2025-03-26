@@ -1,3 +1,5 @@
+import 'package:eatwise/app/modules/bottomnavigation/views/bottomnavigation_view.dart';
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -95,6 +97,24 @@ class RecipebasedonrecommendationView extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomnavigationView(
+        currentIndex: 1, 
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Get.offNamed(Routes.HOME);
+              break;
+            case 1:
+              break;
+            case 2:
+              Get.offNamed(Routes.CHATBOT);
+              break;
+            case 3:
+              Get.offNamed(Routes.PROFILE);
+              break;
+          }
+        },
       ),
     );
   }

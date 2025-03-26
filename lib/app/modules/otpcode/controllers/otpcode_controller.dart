@@ -1,35 +1,31 @@
 import 'package:get/get.dart';
 
 class OtpcodeController extends GetxController {
-  //TEMP CODE SEDERHANANYA
-  void verifyOtp(String otpCode) {
-    const correctOtp = "1234"; 
+  RxBool isLoading = false.obs;
 
-    if (otpCode == correctOtp) {
-      Get.snackbar("Success", "Verification successful!",
-          snackPosition: SnackPosition.BOTTOM);
-      Get.toNamed("/reset-password"); 
-    } else {
-      Get.snackbar("Error", "Invalid OTP code. Please try again.",
-          snackPosition: SnackPosition.BOTTOM);
+  void verifyOtp(String otpCode) async {
+    try {
+      isLoading.value = true;
+      // Your OTP verification logic here
+      await Future.delayed(Duration(seconds: 2)); // Simulated network call
+      
+      // If verification is successful
+      showAccountCreatedPopup(); // Call the popup method
+      
+      isLoading.value = false;
+    } catch (e) {
+      isLoading.value = false;
+      Get.snackbar('Error', 'OTP Verification Failed');
     }
   }
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
+  void showAccountCreatedPopup() {
+    // Similar popup logic as in the view
   }
 
   @override
   void onClose() {
+    // Cleanup logic
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

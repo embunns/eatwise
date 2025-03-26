@@ -79,7 +79,7 @@ class LoginorsignupView extends GetView<LoginorsignupController> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Get.toNamed(Routes.LOGINORSIGNUP);
+                        Get.toNamed(Routes.LOGIN);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -102,7 +102,7 @@ class LoginorsignupView extends GetView<LoginorsignupController> {
                     const SizedBox(height: 10),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(Routes.LOGINORSIGNUP);
+                        Get.toNamed(Routes.SIGNUP);
                       },
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.white,

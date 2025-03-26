@@ -61,7 +61,7 @@ class SignupView extends GetView<SignupController> {
                       child: ElevatedButton(
                         onPressed: () async {
                           controller.signUp();
-                          Get.offNamed(Routes.LOGIN); 
+                          Get.offNamed(Routes.OTPCODE); 
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xffCE181B),

@@ -22,8 +22,12 @@ import '../modules/loginorsignup/bindings/loginorsignup_binding.dart';
 import '../modules/loginorsignup/views/loginorsignup_view.dart';
 import '../modules/newpasswordforgotpassword/bindings/newpasswordforgotpassword_binding.dart';
 import '../modules/newpasswordforgotpassword/views/newpasswordforgotpassword_view.dart';
-import '../modules/onboarding/bindings/onboarding_binding.dart';
-import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/onboarding1/bindings/onboarding1_binding.dart';
+import '../modules/onboarding1/views/onboarding1_view.dart';
+import '../modules/onboarding2/bindings/onboarding2_binding.dart';
+import '../modules/onboarding2/views/onboarding2_view.dart';
+import '../modules/onboarding3/bindings/onboarding3_binding.dart';
+import '../modules/onboarding3/views/onboarding3_view.dart';
 import '../modules/otpcode/bindings/otpcode_binding.dart';
 import '../modules/otpcode/views/otpcode_view.dart';
 import '../modules/otpforgotpassword/bindings/otpforgotpassword_binding.dart';
@@ -46,7 +50,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.NEWPASSWORDFORGOTPASSWORD;
 
   static final routes = [
     GetPage(
@@ -63,11 +67,6 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => SignupView(),
       binding: SignupBinding(),
-    ),
-    GetPage(
-      name: _Paths.ONBOARDING,
-      page: () => const OnboardingView(),
-      binding: OnboardingBinding(),
     ),
     GetPage(
       name: _Paths.LAUCHAPP,
@@ -121,7 +120,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NEWPASSWORDFORGOTPASSWORD,
-      page: () => const NewpasswordforgotpasswordView(),
+      page: () =>  NewpasswordforgotpasswordView(),
       binding: NewpasswordforgotpasswordBinding(),
     ),
     GetPage(
@@ -143,6 +142,21 @@ class AppPages {
       name: _Paths.RECIPEBASEDONBUDGET,
       page: () => RecipebasedonbudgetView(),
       binding: RecipebasedonbudgetBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING1,
+      page: () =>  Onboarding1View(),
+      binding: Onboarding1Binding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING2,
+      page: () =>  Onboarding2View(),
+      binding: Onboarding2Binding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING3,
+      page: () =>  Onboarding3View(),
+      binding: Onboarding3Binding(),
     ),
   ];
 }
