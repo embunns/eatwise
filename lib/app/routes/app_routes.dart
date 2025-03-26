@@ -24,6 +24,7 @@ abstract class Routes {
   static const RECIPEBASEDONCATEGORIES = _Paths.RECIPEBASEDONCATEGORIES;
   static const RECIPEBASEDONRECOMMENDATION = _Paths.RECIPEBASEDONRECOMMENDATION;
   static const RECIPEBASEDONBUDGET = _Paths.RECIPEBASEDONBUDGET;
+  static const BOTTOMNAVIGATION = _Paths.BOTTOMNAVIGATION;
 }
 
 abstract class _Paths {
@@ -49,4 +50,5 @@ abstract class _Paths {
   static const RECIPEBASEDONCATEGORIES = '/recipebasedoncategories';
   static const RECIPEBASEDONRECOMMENDATION = '/recipebasedonrecommendation';
   static const RECIPEBASEDONBUDGET = '/recipebasedonbudget';
+  static const BOTTOMNAVIGATION = '/bottomnavigation';
 }

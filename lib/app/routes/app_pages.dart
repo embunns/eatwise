@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/addrecipe/bindings/addrecipe_binding.dart';
 import '../modules/addrecipe/views/addrecipe_view.dart';
+import '../modules/bottomnavigation/bindings/bottomnavigation_binding.dart';
+import '../modules/bottomnavigation/views/bottomnavigation_view.dart';
 import '../modules/chatbot/bindings/chatbot_binding.dart';
 import '../modules/chatbot/views/chatbot_view.dart';
 import '../modules/detailrecipe/bindings/detailrecipe_binding.dart';
@@ -79,7 +81,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAILRECIPE,
-      page: () =>  DetailrecipeView(),
+      page: () => DetailrecipeView(),
       binding: DetailrecipeBinding(),
     ),
     GetPage(
@@ -99,7 +101,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () =>  ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
