@@ -43,7 +43,7 @@ class Onboarding2View extends GetView<Onboarding2Controller> {
                     'Save Time, Money, and Enjoy Your Meals',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 28,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: const Color(0xFF172635),
                     ),
@@ -55,13 +55,13 @@ class Onboarding2View extends GetView<Onboarding2Controller> {
                     'Quick, affordable, and easy meal solutions that fit your lifestyle.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF8E8E8E),
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -92,7 +92,6 @@ class Onboarding2View extends GetView<Onboarding2Controller> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

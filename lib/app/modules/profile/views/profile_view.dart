@@ -1,121 +1,168 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:eatwise/app/modules/bottomnavigation/views/bottomnavigation_view.dart';
 import 'package:eatwise/app/routes/app_pages.dart';
-import '../controllers/profile_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
-class ProfileView extends GetView<ProfileController> {
+class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
 
+  @override
+  _ProfileViewState createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final TextEditingController _nameController = TextEditingController(text: 'Anila Dwi Lestari');
+  final TextEditingController _phoneController = TextEditingController(text: '081226044730');
+  final TextEditingController _emailController = TextEditingController(text: 'aniladwilestarii@gmail.com');
+  final TextEditingController _passwordController = TextEditingController(text: '••••••');
+  final TextEditingController _confirmPasswordController = TextEditingController(text: '••••••');
+  
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left, size: 33),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
-          'Profile',
+          "Profile",
           style: GoogleFonts.poppins(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontSize: 20, 
+            fontWeight: FontWeight.w600
           ),
         ),
         centerTitle: true,
-        leading: Container(
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 4,
-                spreadRadius: 1,
-              ),
-            ],
-          ),
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 16),
-            onPressed: () => Get.back(),
-          ),
-        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Profile Picture
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFF8A7B9),
+              const SizedBox(height: 15),
+              Stack(
+                children: [
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/images/Avatar.png'),
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
                         shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Image.network(
-                          'https://via.placeholder.com/60/FF5A5F/FFFFFF?text=A',
-                          width: 60,
-                          height: 60,
+                        border: Border.all(
+                          color: const Color(0xFFF8A7B9),
+                          width: 1,
                         ),
                       ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: const Color(0xFFF8A7B9),
-                            width: 1,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.edit,
-                          size: 14,
-                          color: Colors.red,
-                        ),
+                      child: const Icon(
+                        Icons.edit,
+                        size: 14,
+                        color: Colors.red,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(height: 30),
-
-              _buildTextField('Full Name', controller.nameController),
-              _buildTextField('Phone Number', controller.phoneController, keyboardType: TextInputType.phone),
-              _buildTextField('Email', controller.emailController, keyboardType: TextInputType.emailAddress),
               
-              // Password Fields with Toggle
-              Obx(() => _buildPasswordField(
-                'Password', 
-                controller.passwordController, 
-                obscureText: controller.obscurePassword.value, 
-                onToggle: controller.togglePasswordVisibility
-              )),
+              // Full Name
+              buildProfileField(
+                context, 
+                label: "Full Name", 
+                controller: _nameController
+              ),
               
-              Obx(() => _buildPasswordField(
-                'Confirm Password', 
-                controller.confirmPasswordController, 
-                obscureText: controller.obscureConfirmPassword.value, 
-                onToggle: controller.toggleConfirmPasswordVisibility
-              )),
-
-              const SizedBox(height: 30),
-
-              _buildButton('Update Profile', controller.updateProfile),
-              const SizedBox(height: 16),
-              _buildButton('Logout', controller.logout),
+              // Phone Number
+              buildProfileField(
+                context, 
+                label: "Phone Number", 
+                controller: _phoneController,
+                keyboardType: TextInputType.phone
+              ),
+              
+              // Email
+              buildProfileField(
+                context, 
+                label: "Email", 
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress
+              ),
+              
+              buildPasswordField(
+                context,
+                label: "Password",
+                controller: _passwordController,
+                obscureText: _obscurePassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscurePassword = !_obscurePassword;
+                  });
+                }
+              ),
+              
+              buildPasswordField(
+                context,
+                label: "Confirm Password",
+                controller: _confirmPasswordController,
+                obscureText: _obscureConfirmPassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    _obscureConfirmPassword = !_obscureConfirmPassword;
+                  });
+                }
+              ),
+              
+              const SizedBox(height: 50),
+              
+              // Update Profile Button
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(Routes.PROFILE);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xffCE181B),
+                  minimumSize: const Size(double.infinity, 60),
+                ),
+                child: Text(
+                  "Update Profile",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              
+              const SizedBox(height: 20),
+              
+              // Logout Button
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(Routes.LOGIN);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xffCE181B),
+                  minimumSize: const Size(double.infinity, 60),
+                ),
+                child: Text(
+                  "Logout",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              SizedBox(height: 50),
             ],
           ),
         ),
@@ -128,7 +175,7 @@ class ProfileView extends GetView<ProfileController> {
               Get.offNamed(Routes.HOME);
               break;
             case 1:
-              Get.offNamed(Routes.RECIPEBASEDONRECOMMENDATION);
+              Get.offNamed(Routes.RECIPE);
               break;
             case 2:
               Get.offNamed(Routes.CHATBOT);
@@ -141,110 +188,94 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  Widget _buildTextField(
-    String label, 
-    TextEditingController controller, {
+  Widget buildProfileField(
+    BuildContext context, {
+    required String label, 
+    required TextEditingController controller,
     TextInputType keyboardType = TextInputType.text,
   }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: Colors.grey,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFFFFF1F1),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: GoogleFonts.poppins(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xff667085),
             ),
           ),
-          style: GoogleFonts.poppins(),
-        ),
-        const SizedBox(height: 16),
-      ],
-    );
-  }
-
-  Widget _buildPasswordField(
-    String label, 
-    TextEditingController controller, {
-    required bool obscureText,
-    required VoidCallback onToggle,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: Colors.grey,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          obscureText: obscureText,
-          style: GoogleFonts.poppins(),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFFFFF1F1),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
-            ),
-            suffixIcon: IconButton(
-              icon: Icon(
-                obscureText ? Icons.visibility_off : Icons.visibility,
-                color: Colors.grey,
+          const SizedBox(height: 8),
+          TextField(
+            controller: controller,
+            keyboardType: keyboardType,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: const Color(0xffFFF3F3),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
               ),
-              onPressed: onToggle,
+              contentPadding: const EdgeInsets.all(12),
+            ),
+            style: GoogleFonts.poppins(
+              fontSize: 14,
+              color: const Color(0xff667085),
             ),
           ),
-        ),
-        const SizedBox(height: 16),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget _buildButton(String text, VoidCallback onPressed) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xffCE181B),
-        foregroundColor: Colors.white,
-        minimumSize: const Size(double.infinity, 70),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-      ),
-      child: Text(
-        text, 
-        style: GoogleFonts.poppins(
-          textStyle: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+  Widget buildPasswordField(
+    BuildContext context, {
+    required String label,
+    required TextEditingController controller,
+    required bool obscureText,
+    required VoidCallback onToggleVisibility,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: GoogleFonts.poppins(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xff667085),
+            ),
           ),
-        ),
+          const SizedBox(height: 8),
+          TextField(
+            controller: controller,
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: const Color(0xffFFF3F3),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding: const EdgeInsets.all(12),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey,
+                ),
+                onPressed: onToggleVisibility,
+              ),
+            ),
+            style: GoogleFonts.poppins(
+              fontSize: 14,
+              color: const Color(0xff667085),
+            ),
+          ),
+        ],
       ),
     );
   }

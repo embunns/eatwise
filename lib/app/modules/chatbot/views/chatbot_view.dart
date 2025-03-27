@@ -319,7 +319,7 @@ class ChatbotView extends GetView<ChatbotController> {
               Get.offNamed(Routes.HOME);
               break;
             case 1:
-              Get.offNamed(Routes.RECIPEBASEDONRECOMMENDATION);
+              Get.offNamed(Routes.RECIPE);
               break;
             case 2:
               break;

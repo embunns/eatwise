@@ -14,11 +14,16 @@ class LauchappView extends GetView<LauchappController> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            'assets/images/launchappimage.png',
-            fit: BoxFit.fitWidth,
-            width: double.infinity,
+         Positioned(
+            top: 220,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/images/launchappimage.png',
+              fit: BoxFit.cover,
+            ),
           ),
+
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, 
@@ -34,7 +39,7 @@ class LauchappView extends GetView<LauchappController> {
                         'Food',
                         style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 48,
+                          fontSize: 45,
                           fontWeight: FontWeight.w700,
                           height: 1.1, 
                         ),
@@ -43,7 +48,7 @@ class LauchappView extends GetView<LauchappController> {
                         'For Everyone',
                         style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 48,
+                          fontSize: 45,
                           fontWeight: FontWeight.w700,
                           height: 1.1, 
                         ),
@@ -51,7 +56,7 @@ class LauchappView extends GetView<LauchappController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Image.asset(

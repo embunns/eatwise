@@ -42,7 +42,7 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
                     'Find Recipes Based on What You Have',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 28,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: const Color(0xFF172635),
                     ),
@@ -54,13 +54,13 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
                     'Simply enter the ingredients you have, and we’ll suggest delicious meals that fit your budget.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF8E8E8E),
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -91,7 +91,6 @@ class Onboarding1View extends GetView<Onboarding1Controller> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

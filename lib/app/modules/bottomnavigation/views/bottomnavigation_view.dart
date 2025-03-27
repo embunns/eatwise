@@ -14,6 +14,8 @@ class BottomnavigationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 75,
+      padding: EdgeInsetsDirectional.symmetric(horizontal: 18.5),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -60,44 +62,44 @@ class BottomnavigationView extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.explore_outlined),
+                  child: Image.asset('assets/images/explore_grey.png',height: 25, width: 25),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.explore, color: Color(0xffCE181B)),
+                  child:Image.asset('assets/images/explore_red.png',height: 25, width: 25),
                 ),
                 label: 'Explore',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.restaurant_menu_outlined),
+                  child: Image.asset('assets/images/recipe_grey.png',height: 26,width: 26),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.restaurant_menu, color: Color(0xffCE181B)),
+                  child:Image.asset('assets/images/recipe_red.png',height: 25, width: 25),
                 ),
                 label: 'Recipe',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.chat_bubble_outline),
+                  child: Image.asset('assets/images/chatbot_grey.png',height: 25,width: 25),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.chat_bubble, color: Color(0xffCE181B)),
+                  child: Image.asset('assets/images/chatbot_red.png',height: 25,width: 25),
                 ),
                 label: 'Chatbot',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.person_outline),
+                  child: Image.asset('assets/images/profile_grey.png',height: 25,width: 25),
                 ),
                 activeIcon: Padding(
                   padding: const EdgeInsets.only(bottom: 4, top: 8),
-                  child: Icon(Icons.person, color: Color(0xffCE181B)),
+                  child: Image.asset('assets/images/profile_red.png',height: 25,width: 25),
                 ),
                 label: 'Profile',
               ),

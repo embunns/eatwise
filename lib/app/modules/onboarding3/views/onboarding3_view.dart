@@ -43,7 +43,7 @@ class Onboarding3View extends GetView<Onboarding3Controller> {
                     'It’s Time to Get Amazing Cooking!',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 28,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: const Color(0xFF172635),
                     ),
@@ -55,13 +55,13 @@ class Onboarding3View extends GetView<Onboarding3Controller> {
                     'Start your culinary adventure with Eatwise and enjoy meals that make you feel good.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF8E8E8E),
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -92,7 +92,6 @@ class Onboarding3View extends GetView<Onboarding3Controller> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),

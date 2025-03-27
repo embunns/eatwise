@@ -9,7 +9,6 @@ abstract class Routes {
   static const LAUCHAPP = _Paths.LAUCHAPP;
   static const LOGINORSIGNUP = _Paths.LOGINORSIGNUP;
   static const DETAILRECIPE = _Paths.DETAILRECIPE;
-  static const RECIPE = _Paths.RECIPE;
   static const CHATBOT = _Paths.CHATBOT;
   static const EDITDELETERECIPE = _Paths.EDITDELETERECIPE;
   static const ADDRECIPE = _Paths.ADDRECIPE;
@@ -27,6 +26,7 @@ abstract class Routes {
   static const ONBOARDING1 = _Paths.ONBOARDING1;
   static const ONBOARDING2 = _Paths.ONBOARDING2;
   static const ONBOARDING3 = _Paths.ONBOARDING3;
+  static const RECIPE = _Paths.RECIPE;
 }
 
 abstract class _Paths {
@@ -37,7 +37,6 @@ abstract class _Paths {
   static const LAUCHAPP = '/lauchapp';
   static const LOGINORSIGNUP = '/loginorsignup';
   static const DETAILRECIPE = '/detailrecipe';
-  static const RECIPE = '/recipe';
   static const CHATBOT = '/chatbot';
   static const EDITDELETERECIPE = '/editdeleterecipe';
   static const ADDRECIPE = '/addrecipe';
@@ -55,4 +54,5 @@ abstract class _Paths {
   static const ONBOARDING1 = '/onboarding1';
   static const ONBOARDING2 = '/onboarding2';
   static const ONBOARDING3 = '/onboarding3';
+  static const RECIPE = '/recipe';
 }

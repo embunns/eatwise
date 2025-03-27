@@ -158,7 +158,7 @@ class FoodCard extends StatelessWidget {
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Image.asset('assets/images/sack.png', height: 14,),
+                    Image.asset('assets/images/sack.png', height: 13),
                     SizedBox(width: 5),
                     Text('IDR 150.000', style: GoogleFonts.poppins(fontSize: 10)),
                     Spacer(),

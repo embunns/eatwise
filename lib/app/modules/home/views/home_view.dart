@@ -5,6 +5,7 @@ import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -18,7 +19,7 @@ class HomeView extends GetView<HomeController> {
         child: Column(
           children: [
             Container(
-              height: 280,
+              height: 320,
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -32,81 +33,113 @@ class HomeView extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 50),
+                          Row(
                             children: [
-                              SizedBox(height: 40),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Hello, Anila!',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Icon(Icons.waving_hand, color: Colors.amber)
-                                ],
-                              ),
-                              SizedBox(height: 12),
                               Text(
-                                'Unleash Your Culinary \nCreativity And Start \nCooking Today!',
+                                'Hello, Anila!',
                                 style: GoogleFonts.poppins(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
                               ),
+                              SizedBox(width: 5),
+                              Icon(Icons.waving_hand, color: Colors.amber)
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 10,
-                            offset: Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
-                          Icon(Icons.search, color: Colors.grey),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: TextField(
-                              style: GoogleFonts.poppins(),
-                              decoration: InputDecoration(
-                                hintText: 'Search recipe...',
-                                border: InputBorder.none,
-                                hintStyle: GoogleFonts.poppins(color: Colors.grey),
-                              ),
+                          SizedBox(height: 17),
+                          Text(
+                            'Unleash Your Culinary \nCreativity And Start \nCooking Today!',
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
                             ),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.settings_outlined, color: Colors.grey),
-                            onPressed: () {
-                              _showFilterPopup(context);
-                            },
                           ),
                         ],
                       ),
                     ),
                   ],
+                ),
+              ),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 13),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 4,
+                              blurRadius: 8,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.search, color: Colors.grey),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: TextField(
+                                style: GoogleFonts.poppins(),
+                                decoration: InputDecoration(
+                                  hintText: 'Search recipe...',
+                                  border: InputBorder.none,
+                                  hintStyle: GoogleFonts.poppins(
+                                    color: Colors.grey, 
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 4,
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: IconButton(
+                        icon: Icon(Iconsax.setting_4, color: Colors.grey, size:20),
+                        onPressed: () {
+                          _showFilterPopup(context);
+                        },
+                        padding: EdgeInsets.all(12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
                 ),
               ),
             ),
@@ -142,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                           Text(
                             'Recommendation',
                             style: GoogleFonts.poppins(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -155,12 +188,13 @@ class HomeView extends GetView<HomeController> {
                               style: GoogleFonts.poppins(
                                 color: Color(0xffCE181B),
                                 fontWeight: FontWeight.w600,
+                                fontSize: 13,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 8),
                       
                       // Recommendation cards
                       Row(
@@ -201,7 +235,7 @@ class HomeView extends GetView<HomeController> {
             case 0:
               break;
             case 1:
-              Get.offNamed(Routes.RECIPEBASEDONRECOMMENDATION);
+              Get.offNamed(Routes.RECIPE);
               break;
             case 2:
               Get.offNamed(Routes.CHATBOT);
@@ -230,8 +264,8 @@ class HomeView extends GetView<HomeController> {
             ),
             child: Image.asset(
               imagePath,
-              height: 55,
-              width: 55,
+              height: 54,
+              width: 54,
             ),
           ),
           SizedBox(height: 5),
@@ -306,7 +340,7 @@ class HomeView extends GetView<HomeController> {
                   Text(
                     author,
                     style: GoogleFonts.poppins(
-                      fontSize: 12,
+                      fontSize: 10,
                       color: Colors.grey,
                     ),
                   ),
@@ -315,27 +349,28 @@ class HomeView extends GetView<HomeController> {
                     title,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.attach_money, color: Colors.red, size: 16),
+                      Image.asset('assets/images/sack.png', height: 13),
+                      SizedBox(width: 5),
                       Text(
                         price,
                         style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       Spacer(),
-                      Icon(Icons.thumb_up, color: Colors.red, size: 16),
-                      SizedBox(width: 4),
+                      Image.asset('assets/images/like.png', height: 16),
+                      SizedBox(width: 5),
                       Text(
                         likes,
                         style: GoogleFonts.poppins(
-                          fontSize: 12,
+                          fontSize: 10,
                         ),
                       ),
                     ],

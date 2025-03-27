@@ -34,6 +34,8 @@ import '../modules/otpforgotpassword/bindings/otpforgotpassword_binding.dart';
 import '../modules/otpforgotpassword/views/otpforgotpassword_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/recipe/bindings/recipe_binding.dart';
+import '../modules/recipe/views/recipe_view.dart';
 import '../modules/recipebasedonbudget/bindings/recipebasedonbudget_binding.dart';
 import '../modules/recipebasedonbudget/views/recipebasedonbudget_view.dart';
 import '../modules/recipebasedoncategories/bindings/recipebasedoncategories_binding.dart';
@@ -50,7 +52,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NEWPASSWORDFORGOTPASSWORD;
+  static const INITIAL = Routes.EDITDELETERECIPE;
 
   static final routes = [
     GetPage(
@@ -120,7 +122,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NEWPASSWORDFORGOTPASSWORD,
-      page: () =>  NewpasswordforgotpasswordView(),
+      page: () => NewpasswordforgotpasswordView(),
       binding: NewpasswordforgotpasswordBinding(),
     ),
     GetPage(
@@ -145,18 +147,23 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ONBOARDING1,
-      page: () =>  Onboarding1View(),
+      page: () => Onboarding1View(),
       binding: Onboarding1Binding(),
     ),
     GetPage(
       name: _Paths.ONBOARDING2,
-      page: () =>  Onboarding2View(),
+      page: () => Onboarding2View(),
       binding: Onboarding2Binding(),
     ),
     GetPage(
       name: _Paths.ONBOARDING3,
-      page: () =>  Onboarding3View(),
+      page: () => Onboarding3View(),
       binding: Onboarding3Binding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPE,
+      page: () => const RecipeView(),
+      binding: RecipeBinding(),
     ),
   ];
 }
