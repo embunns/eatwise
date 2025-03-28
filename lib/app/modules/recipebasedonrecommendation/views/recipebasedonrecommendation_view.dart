@@ -128,49 +128,57 @@ class FoodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(image, height: 120, width: double.infinity, fit: BoxFit.cover),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Anila Dwi Lestari',
-                  style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  name,
-                  style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 5),
-                Row(
-                  children: [
-                    Image.asset('assets/images/sack.png', height: 13),
-                    SizedBox(width: 5),
-                    Text('IDR 150.000', style: GoogleFonts.poppins(fontSize: 10)),
-                    Spacer(),
-                    Image.asset('assets/images/like.png', height: 17,),
-                    SizedBox(width: 5),
-                    Text('20 Likes', style: GoogleFonts.poppins(fontSize: 10)),
-                  ],
-                ),
-              ],
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.DETAILRECIPE, arguments: {
+          'name': name,
+          'image': image,
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(image, height: 120, width: double.infinity, fit: BoxFit.cover),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Anila Dwi Lestari',
+                    style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    name,
+                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Image.asset('assets/images/sack.png', height: 14,),
+                      SizedBox(width: 5),
+                      Text('IDR 150.000', style: GoogleFonts.poppins(fontSize: 10)),
+                      Spacer(),
+                      Image.asset('assets/images/like.png', height: 17,),
+                      SizedBox(width: 5),
+                      Text('20 Likes', style: GoogleFonts.poppins(fontSize: 10)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

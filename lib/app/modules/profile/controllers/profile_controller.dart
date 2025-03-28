@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:eatwise/app/routes/app_pages.dart';
 
 class ProfileController extends GetxController {
+  final usernameController = TextEditingController(text: 'anila');
   final nameController = TextEditingController(text: 'Anila Dwi Lestari');
   final phoneController = TextEditingController(text: '081226044730');
   final emailController = TextEditingController(text: 'aniladwilestarii@gmail.com');
@@ -70,6 +71,7 @@ class ProfileController extends GetxController {
 
   @override
   void onClose() {
+    usernameController.dispose();
     nameController.dispose();
     phoneController.dispose();
     emailController.dispose();

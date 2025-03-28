@@ -52,7 +52,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.EDITDELETERECIPE;
+  static const INITIAL = Routes.LAUCHAPP;
 
   static final routes = [
     GetPage(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddrecipeController extends GetxController {
   //TODO: Implement AddrecipeController
@@ -20,4 +21,5 @@ class AddrecipeController extends GetxController {
   }
 
   void increment() => count.value++;
+
 }

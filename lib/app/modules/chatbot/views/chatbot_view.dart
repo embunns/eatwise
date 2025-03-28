@@ -3,6 +3,7 @@ import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 import '../controllers/chatbot_controller.dart';
 
 class ChatbotView extends GetView<ChatbotController> {
@@ -29,14 +30,12 @@ class ChatbotView extends GetView<ChatbotController> {
             ),
           ),
           
-          // Chatbot info with like/dislike buttons - Red background
           Container(
             color: const Color(0xFFD91C1C),
             padding: const EdgeInsets.only(top: 16, bottom: 30, left: 16, right: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Chatbot icon and text
                 Row(
                   children: [
                     Container(
@@ -82,7 +81,6 @@ class ChatbotView extends GetView<ChatbotController> {
                   ],
                 ),
                 
-                // Like/Dislike buttons
                 Row(
                   children: [
                     Container(
@@ -94,27 +92,18 @@ class ChatbotView extends GetView<ChatbotController> {
                       child: const Icon(Icons.thumb_up, color: Colors.white),
                     ),
                     const SizedBox(width: 12),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.thumb_down, color: Colors.white),
-                    ),
+                    
                   ],
                 ),
               ],
             ),
           ),
-          // Chat Messages
           Expanded(
             child: Container(
               color: const Color(0xFFF5F5F5),
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  // Time indicator - aligned left
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -136,7 +125,6 @@ class ChatbotView extends GetView<ChatbotController> {
                     ),
                   ),
                   
-                  // Bot message 1
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -149,7 +137,7 @@ class ChatbotView extends GetView<ChatbotController> {
                       ),
                       child: Text(
                         "Hello Nice",
-                        style: GoogleFonts.poppins(fontSize: 18, color: Color(0xff667085)),
+                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
                       ),
                     ),
                   ),
@@ -158,7 +146,7 @@ class ChatbotView extends GetView<ChatbotController> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      margin: const EdgeInsets.only(right: 50, bottom: 16, left: 18),
+                      margin: const EdgeInsets.only(right: 20, bottom: 16, left: 18),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -166,8 +154,8 @@ class ChatbotView extends GetView<ChatbotController> {
                         border: Border.all(color: Colors.grey, width: 0.5), 
                       ),
                       child: Text(
-                        "Welcome to LiveChat\nI was made with  Pick a topic from the list or type down a question!",
-                        style: GoogleFonts.poppins(fontSize: 18, color: Color(0xff667085)),
+                        "Welcome to LiveChat. I was made with  Pick a topic from the list or type down a question!",
+                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
                       ),
                     ),
                   ),
@@ -199,27 +187,10 @@ class ChatbotView extends GetView<ChatbotController> {
                       ),
                       child: Text(
                         "Welcome",
-                        style: GoogleFonts.poppins(fontSize: 18, color: Colors.white),
+                        style: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
                       ),
                     ),
                   ),
-                  
-                  // Read indicator
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: Text(
-                        "Read",
-                        style: GoogleFonts.poppins(
-                          color: Colors.grey[700],
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ),
-                  
-                  // Another time indicator - aligned left
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -254,7 +225,7 @@ class ChatbotView extends GetView<ChatbotController> {
                       ),
                       child: Text(
                         "Welcome to\nLiveChat",
-                        style: GoogleFonts.poppins(fontSize: 18, color: Color(0xff667085)),
+                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
                       ),
                     ),
                   ),
@@ -266,42 +237,31 @@ class ChatbotView extends GetView<ChatbotController> {
             padding: const EdgeInsets.all(16),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade400),
-                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                border: Border.all(color: Colors.grey.shade400, width: 0.5),
+                borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
-                      decoration: const InputDecoration(
-                        hintText: "Okyy",
+                      decoration: InputDecoration(
+                        hintText: "Search here",
+                        hintStyle: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w400),
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       maxLines: 1,
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.sentiment_satisfied_alt, color: Colors.grey),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.attach_file, color: Colors.grey),
-                    onPressed: () {},
-                  ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.only(right: 14),
                     child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFD91C1C),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 18,
+                      width: 26,
+                      height: 26,
+                      
+                      child: Image.asset(
+                        'assets/images/send.png',
                       ),
                     ),
                   ),

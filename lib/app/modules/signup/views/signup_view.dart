@@ -50,6 +50,7 @@ class SignupView extends GetView<SignupController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 15),
+                    buildInputField("Username", "Enter username...", (value) {}),
                     buildInputField("Full Name", "Enter your full name...", (value) {}),
                     buildInputField("Phone Number", "Enter your phone number...", (value) {}),
                     buildInputField("Email", "Enter your email...", (value) {}),

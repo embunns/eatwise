@@ -3,6 +3,7 @@ import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  final TextEditingController _usernameController = TextEditingController(text: 'anila');
   final TextEditingController _nameController = TextEditingController(text: 'Anila Dwi Lestari');
   final TextEditingController _phoneController = TextEditingController(text: '081226044730');
   final TextEditingController _emailController = TextEditingController(text: 'aniladwilestarii@gmail.com');
@@ -55,50 +57,52 @@ class _ProfileViewState extends State<ProfileView> {
                     right: 0,
                     bottom: 0,
                     child: Container(
-                      width: 24,
-                      height: 24,
+                      width: 26,
+                      height: 26,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
-                        border: Border.all(
-                          color: const Color(0xFFF8A7B9),
-                          width: 1,
-                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 3,
+                            offset: Offset(0, 1),
+                          ),
+                        ],
                       ),
                       child: const Icon(
-                        Icons.edit,
+                        Iconsax.edit_24,
                         size: 14,
-                        color: Colors.red,
+                        color: Color(0xffCE181B),
                       ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 30),
-              
-              // Full Name
+              buildProfileField(
+                context, 
+                label: "Username", 
+                controller: _usernameController
+              ),
               buildProfileField(
                 context, 
                 label: "Full Name", 
                 controller: _nameController
               ),
-              
-              // Phone Number
               buildProfileField(
                 context, 
                 label: "Phone Number", 
                 controller: _phoneController,
                 keyboardType: TextInputType.phone
               ),
-              
-              // Email
               buildProfileField(
                 context, 
                 label: "Email", 
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress
               ),
-              
               buildPasswordField(
                 context,
                 label: "Password",
@@ -110,7 +114,6 @@ class _ProfileViewState extends State<ProfileView> {
                   });
                 }
               ),
-              
               buildPasswordField(
                 context,
                 label: "Confirm Password",
@@ -125,7 +128,6 @@ class _ProfileViewState extends State<ProfileView> {
               
               const SizedBox(height: 50),
               
-              // Update Profile Button
               ElevatedButton(
                 onPressed: () {
                   Get.toNamed(Routes.PROFILE);
@@ -143,12 +145,83 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
               ),
               
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               
-              // Logout Button
               ElevatedButton(
                 onPressed: () {
-                  Get.toNamed(Routes.LOGIN);
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                'assets/images/hambuger.png', 
+                                width: 150,
+                                height: 150,
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                'Are you sure you want to exit the application?',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Get.offNamed(Routes.LOGIN);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xffCE181B),
+                                      minimumSize: const Size(100, 50),
+                                    ),
+                                    child: Text(
+                                      'Yes',
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      side: const BorderSide(color: Color(0xffCE181B)),
+                                      minimumSize: const Size(100, 50),
+                                    ),
+                                    child: Text(
+                                      'No',
+                                      style: GoogleFonts.poppins(
+                                        color: const Color(0xffCE181B),
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffCE181B),
@@ -162,7 +235,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 30),
             ],
           ),
         ),

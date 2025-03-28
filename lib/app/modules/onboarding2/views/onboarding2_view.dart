@@ -69,7 +69,9 @@ class Onboarding2View extends GetView<Onboarding2Controller> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed('/loginorsignup');
+                          },
                           child: Text(
                             'Skip',
                             style: GoogleFonts.poppins(

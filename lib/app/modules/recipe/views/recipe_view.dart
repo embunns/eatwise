@@ -57,68 +57,68 @@ class RecipeView extends GetView<RecipeController> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Expanded(
-      flex: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 50),
-          Row(
-            children: [
-              Text(
-                'Create Your Recipe',
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 17),
-          Text(
-            'Create and share your \ndelicious recipes with ease.',
-            style: GoogleFonts.poppins(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(height: 20), 
-          ElevatedButton(
-            onPressed: () {
-              Get.toNamed(Routes.ADDRECIPE);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white, 
-              foregroundColor: Color(0xffCE181B), // Red text
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30), 
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.add, size: 16),
-                SizedBox(width: 8),
-                Text(
-                  'Create Recipe    ',
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  ],
-),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 50),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Create Your Recipe',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 17),
+                                Text(
+                                  'Create and share your \ndelicious recipes with ease.',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(height: 20), 
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Get.toNamed(Routes.ADDRECIPE);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white, 
+                                    foregroundColor: Color(0xffCE181B), 
+                                    padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30), 
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(Icons.add, size: 16),
+                                      SizedBox(width: 8),
+                                      Text(
+                                        'Create Recipe    ',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     Spacer(),
                     Container(
@@ -176,9 +176,9 @@ class RecipeView extends GetView<RecipeController> {
                               ],
                             ),
                             child: IconButton(
-                              icon: Icon(Iconsax.setting_4, color: Colors.grey, size:20),
+                              icon: Icon(Iconsax.like, color: Colors.grey, size:22),
                               onPressed: () {
-                                _showFilterPopup(context);
+                                Get.toNamed(Routes.RECIPEBASEDONRECOMMENDATION);
                               },
                               padding: EdgeInsets.all(12),
                             ),
@@ -254,10 +254,6 @@ class RecipeView extends GetView<RecipeController> {
       ),
     );
   }
-
-  void _showFilterPopup(BuildContext context) {
-    // Implementasi popup filter sama seperti sebelumnya
-  }
 }
 
 class RecipeCard extends StatelessWidget {
@@ -270,7 +266,7 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.DETAILRECIPE, arguments: {
+        Get.toNamed(Routes.EDITDELETERECIPE, arguments: {
           'name': name,
           'image': image,
         });

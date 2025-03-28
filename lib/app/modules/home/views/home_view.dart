@@ -196,7 +196,6 @@ class HomeView extends GetView<HomeController> {
                       ),
                       SizedBox(height: 8),
                       
-                      // Recommendation cards
                       Row(
                         children: [
                           Expanded(
