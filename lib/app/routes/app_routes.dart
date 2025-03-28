@@ -27,6 +27,7 @@ abstract class Routes {
   static const ONBOARDING2 = _Paths.ONBOARDING2;
   static const ONBOARDING3 = _Paths.ONBOARDING3;
   static const RECIPE = _Paths.RECIPE;
+  static const RECIPEBASEDONLIKES = _Paths.RECIPEBASEDONLIKES;
 }
 
 abstract class _Paths {
@@ -55,4 +56,5 @@ abstract class _Paths {
   static const ONBOARDING2 = '/onboarding2';
   static const ONBOARDING3 = '/onboarding3';
   static const RECIPE = '/recipe';
+  static const RECIPEBASEDONLIKES = '/recipebasedonlikes';
 }

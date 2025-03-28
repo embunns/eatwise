@@ -178,7 +178,7 @@ class RecipeView extends GetView<RecipeController> {
                             child: IconButton(
                               icon: Icon(Iconsax.like, color: Colors.grey, size:22),
                               onPressed: () {
-                                Get.toNamed(Routes.RECIPEBASEDONRECOMMENDATION);
+                                Get.toNamed(Routes.RECIPEBASEDONLIKES);
                               },
                               padding: EdgeInsets.all(12),
                             ),

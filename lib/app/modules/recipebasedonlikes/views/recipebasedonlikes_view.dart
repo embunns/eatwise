@@ -1,4 +1,3 @@
-import 'package:eatwise/app/modules/bottomnavigation/views/bottomnavigation_view.dart';
 import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../controllers/recipebasedonrecommendation_controller.dart';
+import '../controllers/recipebasedonlikes_controller.dart';
 
-class RecipebasedonrecommendationView extends StatelessWidget {
+class RecipebasedonlikesView extends StatelessWidget {
   final List<Map<String, String>> foodList = [
     {
       'name': 'Sate Kambing Pak Slamet',
@@ -66,7 +65,7 @@ class RecipebasedonrecommendationView extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          'Recommendation',
+          'Liked Recipes',
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.bold,

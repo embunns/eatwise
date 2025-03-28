@@ -40,6 +40,8 @@ import '../modules/recipebasedonbudget/bindings/recipebasedonbudget_binding.dart
 import '../modules/recipebasedonbudget/views/recipebasedonbudget_view.dart';
 import '../modules/recipebasedoncategories/bindings/recipebasedoncategories_binding.dart';
 import '../modules/recipebasedoncategories/views/recipebasedoncategories_view.dart';
+import '../modules/recipebasedonlikes/bindings/recipebasedonlikes_binding.dart';
+import '../modules/recipebasedonlikes/views/recipebasedonlikes_view.dart';
 import '../modules/recipebasedonrecommendation/bindings/recipebasedonrecommendation_binding.dart';
 import '../modules/recipebasedonrecommendation/views/recipebasedonrecommendation_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -164,6 +166,11 @@ class AppPages {
       name: _Paths.RECIPE,
       page: () => const RecipeView(),
       binding: RecipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECIPEBASEDONLIKES,
+      page: () => RecipebasedonlikesView(),
+      binding: RecipebasedonlikesBinding(),
     ),
   ];
 }
