@@ -1,3 +1,4 @@
+import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -311,7 +312,7 @@ class _EditdeleterecipePageState extends State<EditdeleterecipePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2),
                       child: ElevatedButton(
-                        onPressed: () {}, 
+                        onPressed: _showSuccessPopup,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
                           shape: RoundedRectangleBorder(
@@ -332,7 +333,81 @@ class _EditdeleterecipePageState extends State<EditdeleterecipePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: ElevatedButton(
-                        onPressed: () {}, 
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Dialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/hambuger.png', 
+                                        width: 150,
+                                        height: 150,
+                                      ),
+                                      const SizedBox(height: 20),
+                                      Text(
+                                        'Are you sure you want to delete this recipe?',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              Get.offNamed(Routes.RECIPE);
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: const Color(0xffCE181B),
+                                              minimumSize: const Size(100, 50),
+                                            ),
+                                            child: Text(
+                                              'Yes',
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 20),
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white,
+                                              side: const BorderSide(color: Color(0xffCE181B)),
+                                              minimumSize: const Size(100, 50),
+                                            ),
+                                            child: Text(
+                                              'No',
+                                              style: GoogleFonts.poppins(
+                                                color: const Color(0xffCE181B),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
                           shape: RoundedRectangleBorder(
@@ -397,6 +472,52 @@ class _EditdeleterecipePageState extends State<EditdeleterecipePage> {
         ),
       ),
     );
+  }
+
+  void _showSuccessPopup() {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/images/hambuger.png', 
+                width: 140,
+                height: 140,
+              ),
+              SizedBox(height: 15),
+              Text(
+                'Recipe Successfully Created!',
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Your recipe has been created.\nCheck your recipe now!',
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+    );
+
+    Future.delayed(Duration(seconds: 2), () {
+      Get.offNamed('/recipe'); 
+    });
   }
 
   Widget _buildInfoRow(String imagePath, String text, Color color) {

@@ -104,7 +104,6 @@ class _AddRecipePageState extends State<AddrecipeView> {
         _image = image;
       });
     }
-  // Build scrollable text field
   Widget _buildScrollableTextField(
     TextEditingController controller, 
     ScrollController scrollController, 
@@ -156,7 +155,6 @@ class _AddRecipePageState extends State<AddrecipeView> {
     );
   }
 
-  // Build method
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,7 +273,7 @@ class _AddRecipePageState extends State<AddrecipeView> {
               ),
               SizedBox(height: 10,),
               GestureDetector(
-                onTap: _pickImageFromCamera, // Changed method name
+                onTap: _pickImageFromCamera, 
                 child: Container(
                   width: double.infinity,
                   height: 100,
