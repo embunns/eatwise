@@ -11,11 +11,15 @@ dependencies:
     sdk: flutter
   iconsax: ^0.0.8 
   image_picker: ^1.0.7
-
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   google_fonts: ^6.2.1
   iconify_flutter: ^0.0.7
+  http: ^1.0.0
+  flutter_dotenv: ^5.1.0
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +31,4 @@ flutter:
       - assets/images/
       - assets/images/snack.png
       - assets/images/drink.png
+      - .env

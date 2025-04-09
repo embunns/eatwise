@@ -101,138 +101,55 @@ class ChatbotView extends GetView<ChatbotController> {
           Expanded(
             child: Container(
               color: const Color(0xFFF5F5F5),
-              child: ListView(
-                padding: const EdgeInsets.all(16),
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 16, top: 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.chat, color: Color(0xFFD91C1C), size: 16),
-                          const SizedBox(width: 4),
-                          Text(
-                            "LiveChat 02:10 PM",
-                            style: GoogleFonts.poppins(
-                              color: Colors.grey[700],
-                              fontSize: 12,
-                            ),
+              child: Obx(() {
+                return ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  controller: controller.scrollController,
+                  itemCount: controller.chatMessages.length,
+                  itemBuilder: (context, index) {
+                    final message = controller.chatMessages[index];
+                    final isUser = message.isUser;
+
+                    return Column(
+                      crossAxisAlignment: isUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          isUser ? "Visitor ${message.timestamp}" : "LiveChat ${message.timestamp}",
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey[700],
+                            fontSize: 12,
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 16, left: 18),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey, width: 0.5), 
-                      ),
-                      child: Text(
-                        "Hello Nice",
-                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
-                      ),
-                    ),
-                  ),
-                  
-                  // Bot message 2
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 20, bottom: 16, left: 18),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey, width: 0.5), 
-                      ),
-                      child: Text(
-                        "Welcome to LiveChat. I was made with  Pick a topic from the list or type down a question!",
-                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
-                      ),
-                    ),
-                  ),
-                  
-                  // Visitor time and response
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Visitor 02:12 PM",
-                        style: GoogleFonts.poppins(
-                          color: Colors.grey[700],
-                          fontSize: 12,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  
-                  // Visitor message
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 100, bottom: 8),
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD91C1C),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        "Welcome",
-                        style: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.chat, color: Color(0xFFD91C1C), size: 16),
-                          const SizedBox(width: 4),
-                          Text(
-                            "LiveChat 02:10 PM",
+                        const SizedBox(height: 4),
+                        Container(
+                          margin: EdgeInsets.only(
+                            top: 8,
+                            bottom: 16,
+                            left: isUser ? 100 : 18,
+                            right: isUser ? 18 : 100,
+                          ),
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: isUser ? const Color(0xFFD91C1C) : Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: isUser ? null : Border.all(color: Colors.grey, width: 0.5),
+                          ),
+                          child: Text(
+                            message.text,
                             style: GoogleFonts.poppins(
-                              color: Colors.grey[700],
-                              fontSize: 12,
+                              fontSize: 14,
+                              color: isUser ? Colors.white : const Color(0xff667085),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  
-                  // Bot final message
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 100, bottom: 16, left: 18),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey, width: 0.5), 
-                      ),
-                      child: Text(
-                        "Welcome to\nLiveChat",
-                        style: GoogleFonts.poppins(fontSize: 14, color: Color(0xff667085)),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(16),
             child: Container(
@@ -245,6 +162,7 @@ class ChatbotView extends GetView<ChatbotController> {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: controller.messageController, // ✅ this is essential!
                       decoration: InputDecoration(
                         hintText: "Search here",
                         hintStyle: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w400),
@@ -253,15 +171,16 @@ class ChatbotView extends GetView<ChatbotController> {
                       ),
                       maxLines: 1,
                     ),
+
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 14),
-                    child: Container(
-                      width: 26,
-                      height: 26,
-                      
+                  GestureDetector(
+                    onTap: controller.sendMessage,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
                         'assets/images/send.png',
+                        width: 26,
+                        height: 26,
                       ),
                     ),
                   ),

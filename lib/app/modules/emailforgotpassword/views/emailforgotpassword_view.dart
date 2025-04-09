@@ -5,20 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/emailforgotpassword_controller.dart';
 
-class EmailforgotpasswordView extends StatefulWidget {
-  @override
-  _EmailforgotpasswordViewState createState() => _EmailforgotpasswordViewState();
-}
-
-class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
-  bool isPasswordVisible = true;
-  bool isRememberMeChecked = false;
-  final controller = EmailforgotpasswordController();
+class EmailforgotpasswordView extends StatelessWidget {
+  final EmailforgotpasswordController controller = Get.put(EmailforgotpasswordController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Obx(() => Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xffCE181B), Colors.white],
@@ -73,14 +66,16 @@ class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
                       buildInputField(
                         "Email",
                         "Enter your email...",
-                        (value) => controller.email.value = value,
+                            (value) => controller.email.value = value,
                       ),
                       const SizedBox(height: 40),
-                      SizedBox(
+                      Obx(() => SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.OTPFORGOTPASSWORD);
+                          onPressed: controller.isLoading.value
+                              ? null
+                              : () {
+                            controller.checkEmail();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xffCE181B),
@@ -89,7 +84,11 @@ class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          child: Text(
+                          child: controller.isLoading.value
+                              ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                              : Text(
                             "Send",
                             style: GoogleFonts.poppins(
                               fontSize: 18,
@@ -98,8 +97,19 @@ class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 170),
+                      )),
+                      const SizedBox(height: 20),
+                      if (controller.message.value.isNotEmpty)
+                        Center(
+                          child: Text(
+                            controller.message.value,
+                            style: GoogleFonts.poppins(
+                              fontSize: 13,
+                              color: controller.isEmailValid.value ? Colors.green : Colors.red,
+                            ),
+                          ),
+                        ),
+                      const SizedBox(height: 120),
                     ],
                   ),
                 ),
@@ -107,7 +117,7 @@ class _EmailforgotpasswordViewState extends State<EmailforgotpasswordView> {
             ),
           ),
         ),
-      ),
+      )),
     );
   }
 

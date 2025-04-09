@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import '../controllers/profile_controller.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class _ProfileViewState extends State<ProfileView> {
   final TextEditingController _emailController = TextEditingController(text: 'aniladwilestarii@gmail.com');
   final TextEditingController _passwordController = TextEditingController(text: '••••••');
   final TextEditingController _confirmPasswordController = TextEditingController(text: '••••••');
-  
+  final profileController = Get.put(ProfileController());
+
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
   
@@ -182,7 +184,7 @@ class _ProfileViewState extends State<ProfileView> {
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
-                                      Get.offNamed(Routes.LOGIN);
+                                      profileController.logout(); // menggunakan GetStorage untuk hapus token
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xffCE181B),

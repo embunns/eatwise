@@ -204,10 +204,23 @@ class _OtpcodeViewState extends State<OtpcodeView> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          //String otpCode = otpControllers.map((e) => e.text).join();
-                          //controller.verifyOtp(otpCode);
-                          showAccountCreatedPopup();
+                        onPressed: () async {
+                          String otpCode = otpControllers.map((e) => e.text).join();
+
+                          if (otpCode.length < 4) {
+                            Get.snackbar("Error", "Please enter the full 4-digit OTP code");
+                            return;
+                          }
+
+                          // Panggil fungsi verifikasi dari controller
+                          bool isVerified = await controller.verifyOtp(otpCode);
+
+                          // Jika OTP valid, tampilkan popup
+                          if (isVerified) {
+                            showAccountCreatedPopup();
+                          } else {
+                            Get.snackbar("Error", "Invalid OTP code");
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
@@ -224,7 +237,7 @@ class _OtpcodeViewState extends State<OtpcodeView> {
                             color: Colors.white,
                           ),
                         ),
-                      ),
+                      )
                     ),
                     const SizedBox(height: 160),
                   ],

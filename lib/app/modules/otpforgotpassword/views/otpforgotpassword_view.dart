@@ -10,8 +10,7 @@ class OtpforgotpasswordView extends StatefulWidget {
 }
 
 class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
-  final controller = OtpforgotpasswordController();
-  final List<TextEditingController> otpControllers =
+  final OtpforgotpasswordController controller = Get.put(OtpforgotpasswordController());  final List<TextEditingController> otpControllers =
       List.generate(4, (index) => TextEditingController());
   final List<FocusNode> focusNodes =
       List.generate(4, (index) => FocusNode());
@@ -148,8 +147,9 @@ class _OtpforgotpasswordViewState extends State<OtpforgotpasswordView> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                            Get.toNamed(Routes.NEWPASSWORDFORGOTPASSWORD);
-                          },
+                          String otpCode = otpControllers.map((c) => c.text).join();
+                          controller.verifyOtp(otpCode);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffCE181B),
                           padding: const EdgeInsets.symmetric(vertical: 18),

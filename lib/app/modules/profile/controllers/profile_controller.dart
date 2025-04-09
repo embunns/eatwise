@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:eatwise/app/routes/app_pages.dart';
+import 'package:get_storage/get_storage.dart';
+
 
 class ProfileController extends GetxController {
   final usernameController = TextEditingController(text: 'anila');
@@ -9,6 +11,7 @@ class ProfileController extends GetxController {
   final emailController = TextEditingController(text: 'aniladwilestarii@gmail.com');
   final passwordController = TextEditingController(text: '••••••');
   final confirmPasswordController = TextEditingController(text: '••••••');
+  final box = GetStorage();
 
   final RxBool obscurePassword = true.obs;
   final RxBool obscureConfirmPassword = true.obs;
@@ -35,6 +38,9 @@ class ProfileController extends GetxController {
   }
 
   void logout() {
+    print('Sebelum remove: ${box.read('token')}');
+    box.remove('token');
+    print('Sesudah remove: ${box.read('token')}');
     Get.offAllNamed(Routes.LOGIN);
   }
 

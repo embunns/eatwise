@@ -14,7 +14,8 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   bool isPasswordVisible = true;
   bool isRememberMeChecked = false;
-  final controller = LoginController();
+  final controller = Get.put(LoginController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +74,7 @@ class _LoginViewState extends State<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 15),
-                      buildInputField("Email", "Enter your email...", (value) => controller.email.value = value),
-                      buildPasswordField(),
+                      buildInputField("Email", "Enter your email...", controller.emailController),                      buildPasswordField(),
                       Row(
                         children: [
                           Transform.scale(
@@ -123,8 +123,8 @@ class _LoginViewState extends State<LoginView> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                           onPressed: () {
-                            Get.toNamed(Routes.HOME);
+                          onPressed: () {
+                            controller.login(); // Call API
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xffCE181B),
@@ -177,14 +177,14 @@ class _LoginViewState extends State<LoginView> {
 }
 
 
-  Widget buildInputField(String label, String hint, Function(String) onChanged, {bool obscureText = false}) {
+  Widget buildInputField(String label, String hint, TextEditingController controller, {bool obscureText = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: GoogleFonts.poppins(fontSize: 15)),
         const SizedBox(height: 7),
         TextField(
-          onChanged: onChanged,
+          controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
             filled: true,
@@ -206,6 +206,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
+
   Widget buildPasswordField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,7 +214,7 @@ class _LoginViewState extends State<LoginView> {
         Text("Password", style: GoogleFonts.poppins(fontSize: 15)),
         const SizedBox(height: 7),
         TextField(
-          onChanged: (value) => controller.password.value = value,
+          controller: controller.passwordController,
           obscureText: !isPasswordVisible,
           decoration: InputDecoration(
             filled: true,
@@ -245,4 +246,5 @@ class _LoginViewState extends State<LoginView> {
       ],
     );
   }
+
 }

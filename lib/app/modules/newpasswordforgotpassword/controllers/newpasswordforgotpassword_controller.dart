@@ -1,101 +1,130 @@
+import 'dart:convert';
+
 import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class NewpasswordforgotpasswordController extends GetxController {
-  RxString newPassword = ''.obs;
-  RxString confirmPassword = ''.obs;
-  
-  // Loading state for UI
+  final newPasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
   RxBool isLoading = false.obs;
-  
-  // Password visibility state
   RxBool isPasswordVisible = true.obs;
+  late String email;
 
-  // Validate passwords before submission
+  @override
+  void onInit() {
+    super.onInit();
+    email = Get.arguments;
+    print("Email diterima untuk reset password: $email");
+  }
+
   bool validatePasswords() {
-    // Check if passwords are empty
-    if (newPassword.value.isEmpty || confirmPassword.value.isEmpty) {
-      Get.snackbar(
-        'Error', 
-        'Please enter both passwords',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+    final newPassword = newPasswordController.text.trim();
+    final confirmPassword = confirmPasswordController.text.trim();
+
+    if (newPassword.isEmpty || confirmPassword.isEmpty) {
+      Get.snackbar('Error', 'Please enter both passwords',
+          snackPosition: SnackPosition.BOTTOM);
       return false;
     }
 
-    // Check if passwords match
-    if (newPassword.value != confirmPassword.value) {
-      Get.snackbar(
-        'Error', 
-        'Passwords do not match',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+    if (newPassword != confirmPassword) {
+      Get.snackbar('Error', 'Passwords do not match',
+          snackPosition: SnackPosition.BOTTOM);
       return false;
     }
 
-    // Check password length
-    if (newPassword.value.length < 6) {
-      Get.snackbar(
-        'Error', 
-        'Password must be at least 6 characters',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+    if (newPassword.length < 6) {
+      Get.snackbar('Error', 'Password must be at least 6 characters',
+          snackPosition: SnackPosition.BOTTOM);
       return false;
     }
 
     return true;
   }
 
-  // Method to reset password
   void resetPassword() async {
-    // Ensure passwords are valid first
-    if (!validatePasswords()) return;
+    final newPassword = newPasswordController.text.trim();
+    final confirmPassword = confirmPasswordController.text.trim();
+
+    // Validasi
+    if (newPassword.isEmpty || confirmPassword.isEmpty) {
+      Get.snackbar('Error', 'Please enter both passwords',
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+
+    if (newPassword != confirmPassword) {
+      Get.snackbar('Error', 'Passwords do not match',
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      Get.snackbar('Error', 'Password must be at least 6 characters',
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
 
     try {
-      // Set loading state
       isLoading.value = true;
 
-      // Simulated network call for password reset
-      // Replace with actual API call in your implementation
-      await Future.delayed(Duration(seconds: 2));
-
-      // Show success dialog
-      Get.defaultDialog(
-        title: 'Password Reset',
-        middleText: 'Your password has been successfully reset',
-        confirmTextColor: Colors.white,
-        buttonColor: Color(0xffCE181B),
-        textConfirm: 'Login',
-        onConfirm: () {
-          // Navigate to login page
-          Get.offNamed(Routes.LOGIN);
-        }
+      final url = Uri.parse('http://10.0.2.2:8000/api/reset-password'); // ganti dengan IP Laravel kamu
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json', // ✅ Tambahkan ini
+        },
+        body: jsonEncode({
+          'email': email,
+          'new_password': newPassword,
+        }),
       );
+
+
+      final responseData = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        Get.defaultDialog(
+          title: 'Password Reset',
+          middleText: 'Your password has been successfully reset',
+          confirmTextColor: Colors.white,
+          buttonColor: const Color(0xffCE181B),
+          textConfirm: 'Login',
+          onConfirm: () {
+            Get.offNamed(Routes.LOGIN);
+          },
+        );
+      } else {
+        Get.snackbar(
+          'Failed',
+          responseData['message'] ?? 'Failed to reset password',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
     } catch (e) {
-      // Handle any errors during password reset
+      print(e);
       Get.snackbar(
-        'Error', 
-        'Failed to reset password. Please try again.',
+        'Error',
+        'Something went wrong. Please try again.',
         snackPosition: SnackPosition.BOTTOM,
       );
     } finally {
-      // Reset loading state
       isLoading.value = false;
     }
   }
 
-  // Toggle password visibility
+
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
   @override
   void onClose() {
-    // Clean up resources when controller is removed
-    newPassword.close();
-    confirmPassword.close();
-    isLoading.close();
+    newPasswordController.dispose();
+    confirmPasswordController.dispose();
     super.onClose();
   }
 }

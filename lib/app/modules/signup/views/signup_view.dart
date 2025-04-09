@@ -50,19 +50,19 @@ class SignupView extends GetView<SignupController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 15),
-                    buildInputField("Username", "Enter username...", (value) {}),
-                    buildInputField("Full Name", "Enter your full name...", (value) {}),
-                    buildInputField("Phone Number", "Enter your phone number...", (value) {}),
-                    buildInputField("Email", "Enter your email...", (value) {}),
-                    buildPasswordField("Password", "Enter your password...", (value) {}),
-                    buildPasswordField("Confirm Password", "Confirm your password...", (value) {}),
+                    buildInputField("Username", "Enter username...", controller.usernameController),
+                    buildInputField("Full Name", "Enter your full name...", controller.fullNameController),
+                    buildInputField("Phone Number", "Enter your phone number...", controller.phoneController),
+                    buildInputField("Email", "Enter your email...", controller.emailController),
+                    buildPasswordField("Password", "Enter your password...", controller.passwordController),
+                    buildPasswordField("Confirm Password", "Confirm your password...", controller.confirmPasswordController),
                     SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () async {
                           controller.signUp();
-                          Get.offNamed(Routes.OTPCODE); 
+                          Get.offNamed(Routes.SIGNUP);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xffCE181B),
@@ -113,14 +113,14 @@ class SignupView extends GetView<SignupController> {
     );
   }
 
-  Widget buildInputField(String label, String hint, Function(String) onChanged) {
+  Widget buildInputField(String label, String hint,  TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: GoogleFonts.poppins(fontSize: 15)),
         SizedBox(height: 1),
         TextField(
-          onChanged: onChanged,
+          controller: controller,
           decoration: InputDecoration(
             filled: true,
             fillColor: Color(0xffFFF3F3),
@@ -141,7 +141,7 @@ class SignupView extends GetView<SignupController> {
     );
   }
 
-  Widget buildPasswordField(String label, String hint, Function(String) onChanged) {
+  Widget buildPasswordField(String label, String hint,  TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -149,7 +149,7 @@ class SignupView extends GetView<SignupController> {
         SizedBox(height: 7),
         TextField(
           obscureText: true,
-          onChanged: onChanged,
+          controller: controller,
           decoration: InputDecoration(
             filled: true,
             fillColor: Color(0xffFFF3F3),

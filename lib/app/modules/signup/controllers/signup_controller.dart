@@ -1,39 +1,83 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:eatwise/app/routes/app_pages.dart'; // Adjust this import path if needed
 
 class SignupController extends GetxController {
-  var fullname = ''.obs;
-  var email = ''.obs;
-  var phoneNumber = ''.obs;
-  var password = ''.obs;
-  var confirmpassword = ''.obs;
-
-  //final FirebaseAuth _auth = FirebaseAuth.instance;
-  //final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final usernameController = TextEditingController();
+  final fullNameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   Future<void> signUp() async {
-    if (password.value != confirmpassword.value) {
-      Get.snackbar('Error', 'Passwords do not match');
+    final username = usernameController.text.trim();
+    final fullName = fullNameController.text.trim();
+    final phone = phoneController.text.trim();
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+    final confirmPassword = confirmPasswordController.text;
+
+    if (username.isEmpty ||
+        fullName.isEmpty ||
+        phone.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
+      Get.snackbar("Error", "Please fill all fields");
+      return;
+    }
+
+    if (password != confirmPassword) {
+      Get.snackbar("Error", "Passwords do not match");
       return;
     }
 
     try {
-      //UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-      //  email: email.value,
-      //  password: password.value,
-      //);
+      final response = await http.post(
+        Uri.parse('http://10.0.2.2:8000/api/signup'),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'username': username,
+          'fullname': fullName,
+          'phone_number': phone,
+          'email': email,
+          'password': password,
+        }),
+      );
 
-      //String uid = userCredential.user!.uid;
-
-      //await _firestore.collection('users').doc(uid).set({
-      //  'fullname': fullname.value,
-      //  'email': email.value,
-      //  'phonenumber': phoneNumber.value,
-      //  'likedrecipes': [],
-      //});
-
-      Get.offNamed('/login');
+      if (response.statusCode == 200) {
+        Get.snackbar("Success", "Account created!");
+        Get.offNamed(Routes.OTPCODE);
+      } else {
+        try {
+          final error = jsonDecode(response.body);
+          Get.snackbar("Signup Failed", error['message'] ?? "Unknown error");
+        } catch (e) {
+          Get.snackbar("Signup Failed", "Raw: ${response.body}");
+        }
+      }
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar("Error", "Exception: $e");
     }
+
   }
+
+  @override
+  void onClose() {
+    usernameController.dispose();
+    fullNameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.onClose();
+  }
+
+
 }
