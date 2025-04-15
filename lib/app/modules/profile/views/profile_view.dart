@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:eatwise/app/modules/bottomnavigation/views/bottomnavigation_view.dart';
 import 'package:eatwise/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:image_picker/image_picker.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends StatefulWidget {
@@ -29,7 +32,7 @@ class _ProfileViewState extends State<ProfileView> {
         title: Text(
           "Profile",
           style: GoogleFonts.poppins(
-            fontSize: 20, 
+            fontSize: 20,
             fontWeight: FontWeight.w600
           ),
         ),
@@ -43,38 +46,109 @@ class _ProfileViewState extends State<ProfileView> {
             children: [
               const SizedBox(height: 15),
               Stack(
+                alignment: Alignment.center,
                 children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('assets/images/Avatar.png'),
-                  ),
+                  Obx(() {
+                    return CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.grey.shade200,
+                      backgroundImage: profileController.selectedImage.value != null
+                          ? FileImage(File(profileController.selectedImage.value!.path))
+                          : (profileController.imageUrl.value.isNotEmpty
+                          ? NetworkImage(profileController.imageUrl.value)
+                          : null) as ImageProvider?,
+                      child: profileController.imageUrl.value.isEmpty &&
+                          profileController.selectedImage.value == null
+                          ? Icon(Icons.person, size: 50, color: Colors.grey)
+                          : null,
+                    );
+                  }),
+
                   Positioned(
                     right: 0,
                     bottom: 0,
-                    child: Container(
-                      width: 26,
-                      height: 26,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 3,
-                            offset: Offset(0, 1),
+                    child: GestureDetector(
+                      onTap: () async {
+                        // Show a dialog to pick an image source (camera or gallery)
+                        await showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text('Select Image Source'),
+                            actions: [
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                  final picker = ImagePicker();
+                                  final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+                                  if (pickedFile != null) {
+                                    profileController.selectedImage.value = pickedFile;
+                                  }
+                                },
+                                child: Text('Gallery'),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                  final picker = ImagePicker();
+                                  final pickedFile = await picker.pickImage(source: ImageSource.camera);
+                                  if (pickedFile != null) {
+                                    profileController.selectedImage.value = pickedFile;
+                                  }
+                                },
+                                child: Text('Camera'),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: const Icon(
-                        Iconsax.edit_24,
-                        size: 14,
-                        color: Color(0xffCE181B),
-                      ),
+                        );
+                      },
+                      child: Obx(() => Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: profileController.selectedImage.value == null
+                            ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 28,
+                              height: 28,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    spreadRadius: 1,
+                                    blurRadius: 3,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ],
+                              ),
+                              child: const Icon(
+                                Icons.edit,
+                                size: 16,
+                                color: Color(0xffCE181B),
+                              ),
+                            ),
+                          ],
+                        )
+                            : ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.file(
+                            File(profileController.selectedImage.value!.path),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )),
                     ),
                   ),
                 ],
               ),
+
 
               const SizedBox(height: 30),
               buildProfileField(
@@ -83,19 +157,19 @@ class _ProfileViewState extends State<ProfileView> {
                 controller: profileController.usernameController,
               ),
               buildProfileField(
-                context, 
-                label: "Full Name", 
+                context,
+                label: "Full Name",
                 controller: profileController.nameController
               ),
               buildProfileField(
-                context, 
-                label: "Phone Number", 
+                context,
+                label: "Phone Number",
                 controller:  profileController.phoneController,
                 keyboardType: TextInputType.phone
               ),
               buildProfileField(
-                context, 
-                label: "Email", 
+                context,
+                label: "Email",
                 controller:  profileController.emailController,
                 keyboardType: TextInputType.emailAddress
               ),
@@ -121,7 +195,7 @@ class _ProfileViewState extends State<ProfileView> {
                   });
                 }
               ),
-              
+
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
@@ -156,7 +230,7 @@ class _ProfileViewState extends State<ProfileView> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Image.asset(
-                                'assets/images/hambuger.png', 
+                                'assets/images/hambuger.png',
                                 width: 150,
                                 height: 150,
                               ),
@@ -235,17 +309,17 @@ class _ProfileViewState extends State<ProfileView> {
         ),
       ),
       bottomNavigationBar: BottomnavigationView(
-        currentIndex: 3, 
+        currentIndex: 3,
         onTap: (index) {
           switch (index) {
             case 0:
               Get.offNamed(Routes.HOME, arguments: profileController.emailController.text);
               break;
             case 1:
-              Get.offNamed(Routes.RECIPE);
+              Get.offNamed(Routes.RECIPE, arguments: profileController.emailController.text);
               break;
             case 2:
-              Get.offNamed(Routes.CHATBOT);
+              Get.offNamed(Routes.CHATBOT, arguments: profileController.emailController.text);
               break;
             case 3:
               break;
@@ -257,7 +331,7 @@ class _ProfileViewState extends State<ProfileView> {
 
   Widget buildProfileField(
     BuildContext context, {
-    required String label, 
+    required String label,
     required TextEditingController controller,
     TextInputType keyboardType = TextInputType.text,
   }) {

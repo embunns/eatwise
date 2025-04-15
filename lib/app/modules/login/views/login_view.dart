@@ -12,7 +12,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  bool isPasswordVisible = true;
+  bool isPasswordVisible = false;
   bool isRememberMeChecked = false;
   final controller = Get.put(LoginController());
 

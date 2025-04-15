@@ -35,113 +35,113 @@ class HomeView extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Column(
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 50),
-                          Row(
-                            children: [
-                              Obx(() => Text(
-                                'Hello, ${controller.username.value}!',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 50),
+                                Row(
+                                  children: [
+                                    Obx(() => Text(
+                                      'Hello, ${controller.username.value}!',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    )),
+                                    SizedBox(width: 5),
+                                    Icon(Icons.waving_hand, color: Colors.amber),
+                                  ],
                                 ),
-                              )),
-                              SizedBox(width: 5),
-                              Icon(Icons.waving_hand, color: Colors.amber),
-                            ],
-                          ),
-                          SizedBox(height: 17),
-                          Text(
-                            'Unleash Your Culinary \nCreativity And Start \nCooking Today!',
-                            style: GoogleFonts.poppins(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Spacer(),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 13),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 4,
-                              blurRadius: 8,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.search, color: Colors.grey),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: TextField(
-                                style: GoogleFonts.poppins(),
-                                decoration: InputDecoration(
-                                  hintText: 'Search recipe...',
-                                  border: InputBorder.none,
-                                  hintStyle: GoogleFonts.poppins(
-                                    color: Colors.grey,
-                                    fontSize: 14,
+                                SizedBox(height: 17),
+                                Text(
+                                  'Unleash Your Culinary \nCreativity And Start \nCooking Today!',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 4,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
                           ),
                         ],
                       ),
-                      child: IconButton(
-                        icon: Icon(Iconsax.setting_4, color: Colors.grey, size:20),
-                        onPressed: () {
-                          _showFilterPopup(context);
-                        },
-                        padding: EdgeInsets.all(12),
+                    ),
+                    Spacer(),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 13),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    spreadRadius: 4,
+                                    blurRadius: 8,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.search, color: Colors.grey),
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    child: TextField(
+                                      style: GoogleFonts.poppins(),
+                                      decoration: InputDecoration(
+                                        hintText: 'Search recipe...',
+                                        border: InputBorder.none,
+                                        hintStyle: GoogleFonts.poppins(
+                                          color: Colors.grey,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 4,
+                                  blurRadius: 8,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: IconButton(
+                              icon: Icon(Iconsax.setting_4, color: Colors.grey, size:20),
+                              onPressed: () {
+                                _showFilterPopup(context);
+                              },
+                              padding: EdgeInsets.all(12),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
-                ),
-              ),
-            ],
                 ),
               ),
             ),
@@ -236,10 +236,10 @@ class HomeView extends GetView<HomeController> {
             case 0:
               break;
             case 1:
-              Get.offNamed(Routes.RECIPE);
+              Get.offNamed(Routes.RECIPE, arguments: {'email': controller.email.value});
               break;
             case 2:
-              Get.offNamed(Routes.CHATBOT);
+              Get.offNamed(Routes.CHATBOT, arguments: {'email': controller.email.value});
               break;
             case 3:
               Get.offNamed(Routes.PROFILE, arguments: {'email': controller.email.value});
@@ -386,149 +386,149 @@ class HomeView extends GetView<HomeController> {
   }
 
   void _showFilterPopup(BuildContext context) {
-  String? selectedPriceRange;
+    String? selectedPriceRange;
 
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Filter',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Price',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: 10),
-                StatefulBuilder(
-                  builder: (context, setState) {
-                    return Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      children: [
-                        _buildPriceFilterChip('<15K',
-                          isSelected: selectedPriceRange == '<15K',
-                          onSelected: () {
-                            setState(() {
-                              selectedPriceRange = '<15K';
-                            });
-                          }
-                        ),
-                        _buildPriceFilterChip('15K - 30K',
-                          isSelected: selectedPriceRange == '15K - 30K',
-                          onSelected: () {
-                            setState(() {
-                              selectedPriceRange = '15K - 30K';
-                            });
-                          }
-                        ),
-                        _buildPriceFilterChip('30K - 50K',
-                          isSelected: selectedPriceRange == '30K - 50K',
-                          onSelected: () {
-                            setState(() {
-                              selectedPriceRange = '30K - 50K';
-                            });
-                          }
-                        ),
-                        _buildPriceFilterChip('50K - 100K',
-                          isSelected: selectedPriceRange == '50K - 100K',
-                          onSelected: () {
-                            setState(() {
-                              selectedPriceRange = '50K - 100K';
-                            });
-                          }
-                        ),
-                        _buildPriceFilterChip('>100K',
-                          isSelected: selectedPriceRange == '>100K',
-                          onSelected: () {
-                            setState(() {
-                              selectedPriceRange = '>100K';
-                            });
-                          }
-                        ),
-                      ],
-                    );
-                  },
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    if (selectedPriceRange != null) {
-                      Navigator.of(context).pop();
-                      Get.toNamed(
-                        Routes.RECIPEBASEDONBUDGET,
-                        arguments: selectedPriceRange
-                      );
-                    } else {
-
-                      Get.snackbar(
-                        'Error',
-                        'Please select a price range',
-                        snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: Colors.red,
-                        colorText: Colors.white,
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffCE181B),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    'Send',
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'Filter',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                      color: Colors.white,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 20),
+                  Text(
+                    'Price',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  StatefulBuilder(
+                    builder: (context, setState) {
+                      return Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: [
+                          _buildPriceFilterChip('<15K',
+                              isSelected: selectedPriceRange == '<15K',
+                              onSelected: () {
+                                setState(() {
+                                  selectedPriceRange = '<15K';
+                                });
+                              }
+                          ),
+                          _buildPriceFilterChip('15K - 30K',
+                              isSelected: selectedPriceRange == '15K - 30K',
+                              onSelected: () {
+                                setState(() {
+                                  selectedPriceRange = '15K - 30K';
+                                });
+                              }
+                          ),
+                          _buildPriceFilterChip('30K - 50K',
+                              isSelected: selectedPriceRange == '30K - 50K',
+                              onSelected: () {
+                                setState(() {
+                                  selectedPriceRange = '30K - 50K';
+                                });
+                              }
+                          ),
+                          _buildPriceFilterChip('50K - 100K',
+                              isSelected: selectedPriceRange == '50K - 100K',
+                              onSelected: () {
+                                setState(() {
+                                  selectedPriceRange = '50K - 100K';
+                                });
+                              }
+                          ),
+                          _buildPriceFilterChip('>100K',
+                              isSelected: selectedPriceRange == '>100K',
+                              onSelected: () {
+                                setState(() {
+                                  selectedPriceRange = '>100K';
+                                });
+                              }
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (selectedPriceRange != null) {
+                        Navigator.of(context).pop();
+                        Get.toNamed(
+                            Routes.RECIPEBASEDONBUDGET,
+                            arguments: selectedPriceRange
+                        );
+                      } else {
+
+                        Get.snackbar(
+                          'Error',
+                          'Please select a price range',
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.red,
+                          colorText: Colors.white,
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xffCE181B),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Send',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 
-Widget _buildPriceFilterChip(
-  String label, {
-  required bool isSelected,
-  required VoidCallback onSelected,
-}) {
-  return ChoiceChip(
-    label: Text(
-      label,
-      style: GoogleFonts.poppins(
-        color: isSelected ? Colors.white : Colors.black,
+  Widget _buildPriceFilterChip(
+      String label, {
+        required bool isSelected,
+        required VoidCallback onSelected,
+      }) {
+    return ChoiceChip(
+      label: Text(
+        label,
+        style: GoogleFonts.poppins(
+          color: isSelected ? Colors.white : Colors.black,
+        ),
       ),
-    ),
-    selected: isSelected,
-    onSelected: (_) => onSelected(),
-    selectedColor: Color(0xffCE181B),
-    backgroundColor: Colors.grey[200],
-  );
-}
+      selected: isSelected,
+      onSelected: (_) => onSelected(),
+      selectedColor: Color(0xffCE181B),
+      backgroundColor: Colors.grey[200],
+    );
+  }
 }
